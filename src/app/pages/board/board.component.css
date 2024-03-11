@@ -1,0 +1,14 @@
+#board-content::-webkit-scrollbar {
+  height: 12px;
+}
+
+#board-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  margin: 12px;
+}
+
+#board-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .4);
+  border-radius: 4px;
+}

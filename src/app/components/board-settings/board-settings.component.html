@@ -1,0 +1,50 @@
+<div class="{{(settings | async)? 'min-w-[340px]' : 'min-w-0'}} h-full duration-200 relative">
+  <div class="{{(settings | async)? 'visible' : 'invisible delay-200'}} absolute left-0 h-full w-full bg-cc-menu min-w-[340px] text-cc-text overflow-hidden flex flex-col">
+    <div class="px-4">
+      <div class="border-b border-cc-border/15 flex items-center justify-center relative">
+        <h3 class="my-4 mx-8 font-medium">{{activeMenu}}</h3>
+        <button title="Go back." class="{{activeMenu != settingsMenu.DEFAULT? '' : 'invisible translate-x-[-200%]'}} duration-200 p-[6px] rounded-md aspect-square hover:bg-cc-menu-item-hover absolute left-0" (click)="activeMenu = settingsMenu.DEFAULT">
+          <app-chevron-icon dimensions="size-4 rotate-90"></app-chevron-icon>
+        </button>
+        <button title="Close the board menu." (click)="setSettings(false)" class="p-[6px] rounded-md aspect-square hover:bg-cc-menu-item-hover absolute right-0">
+          <app-xmark-icon dimensions="size-4"></app-xmark-icon>
+        </button>
+      </div>
+    </div>
+
+    @switch (activeMenu) {
+      @case (settingsMenu.DEFAULT) {
+        <div class="p-4 text-sm font-base flex flex-col gap-1 menu-animation h-full overflow-y-auto scrollbar">
+          <button (click)="setActiveMenu(settingsMenu.ARCHIVED)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
+            <app-archive-icon dimensions="size-5"></app-archive-icon>
+            Archived items
+          </button>
+          <button (click)="setActiveMenu(settingsMenu.BACKGROUND)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
+            <div class="size-5 rounded-sm {{board.background}}"></div>
+            Change background
+          </button>
+          <button (click)="setActiveMenu(settingsMenu.LABELS)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
+            <app-label-icon dimensions="size-5 -rotate-90"></app-label-icon>
+            Labels
+          </button>
+          <button class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
+            <app-minus-icon dimensions="size-5"></app-minus-icon>
+            Close board
+          </button>
+        </div>
+      }
+      @case (settingsMenu.ARCHIVED) {
+        <div class="p-4 submenu-animation">
+          <p>archive</p>
+        </div>
+      }
+      @case (settingsMenu.BACKGROUND) {
+        <app-change-background [board]="board"></app-change-background>
+      }
+      @case (settingsMenu.LABELS) {
+        <app-labels></app-labels>
+      }
+    }
+
+  </div>
+</div>

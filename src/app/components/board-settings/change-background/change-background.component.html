@@ -1,0 +1,27 @@
+<div class="submenu-animation p-4 flex flex-col h-full overflow-y-auto scrollbar">
+  <div class="grid grid-cols-2 pb-6 gap-2 border-b border-cc-border/15">
+    @for (background of boardBackgrounds.gradients; track $index) {
+    <button class="h-24 rounded-lg flex py-3 px-2 items-end relative {{background.class}}"
+      (click)="board.background = background.class; board.base = background.base">
+      <span class="select-none">{{background.emoji}}</span>
+      <span class="absolute h-full w-full flex items-center justify-center top-0 left-0 hover:bg-cc-base/20 text-white">
+        @if (background.class === board.background) {
+        <app-check-icon dimensions="size-4"></app-check-icon>
+        }
+      </span>
+    </button>
+    }
+  </div>
+  <div class="grid grid-cols-5 gap-2 mt-5">
+    @for (background of boardBackgrounds.solids; track $index) {
+    <button class="aspect-square rounded-md relative {{background.class}}"
+      (click)="board.background = background.class; board.base = background.base">
+      <span class="absolute h-full w-full flex items-center justify-center top-0 left-0 hover:bg-cc-base/20 text-white">
+        @if (background.class === board.background) {
+        <app-check-icon dimensions="size-4"></app-check-icon>
+        }
+      </span>
+    </button>
+    }
+  </div>
+</div>

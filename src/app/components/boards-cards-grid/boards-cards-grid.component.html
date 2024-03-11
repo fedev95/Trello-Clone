@@ -1,0 +1,8 @@
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+  @for (board of workspace.boards; track $index) {
+    <app-board-preview-card [workspaceId]="workspace.id" [board]="board"></app-board-preview-card>
+  }
+  @if (workspace.boards.length < 5) {
+    <button class="h-24 text-center text-sm text-cc-text bg-cc-surface hover:bg-cc-overlay rounded-[3px] duration-200">Create new board</button>
+  }
+</div>

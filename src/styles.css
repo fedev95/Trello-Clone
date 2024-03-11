@@ -1,1 +1,398 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* logo */
+  --logo-filter: brightness(0) saturate(100%) invert(30%) sepia(53%) saturate(323%) hue-rotate(179deg) brightness(91%) contrast(88%);
+  --board-logo-filter: none;
+
+  /* base */
+  --base: 255, 255, 255;
+  --surface: 241, 242, 244;
+  --overlay: 220, 223, 228;
+  --border: 22, 41, 74;
+  --shadow: 0, 0, 0, 0.1;
+  --menu: 255, 255, 255;
+  --menu-item-hover: 241, 242, 244;
+  --text: 23, 43, 77;
+  --subtle: 68, 84, 111;
+  --accent: 12, 102, 228;
+  --accent-muted: 233, 242, 255;
+  --accent-highlight: 0, 85, 204;
+  --scrollbar-track: 227, 229, 234;
+  --scrollbar-thumb: 196, 201, 210;
+
+  /* board page */
+  --boardpage-nav-text: 255, 255, 255;
+  --boardpage-nav-bg: 0, 0, 0, 0.2;
+  --boardpage-menu-hover: 255, 255, 255, 0.1;
+  --boardpage-menu-active: 255, 255, 255, 0.2;
+  --boardpage-menu-text-active: 255, 255, 255;
+  
+  --boardpage-accent-menu: 255, 255, 255, 0.2;
+  --boardpage-accent-menu-hover: 255, 255, 255, 0.3;
+
+  --board-filter: 0, 0, 0, 0;
+  --board-sidebar: 255, 255, 255, 0;
+  --board-sidebar-collapse: 0, 0, 0, 0.3;
+  --board-sidebar-text: 255, 255, 255;
+  --task-list: 241, 242, 244;
+  --task-list-btn: 208, 212, 219;
+  --task-list-scrollbar-track: 227, 229, 234;
+  --task-list-scrollbar-thumb: 196, 201, 210;
+  --task-card: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* logo */
+    --logo-filter: brightness(0) saturate(100%) invert(66%) sepia(20%) saturate(225%) hue-rotate(170deg) brightness(101%) contrast(85%);
+    --board-logo-filter: brightness(0) saturate(100%) invert(66%) sepia(20%) saturate(225%) hue-rotate(170deg) brightness(101%) contrast(85%);
+
+    /* base */
+    --base: 28, 32, 36;
+    --surface: 40, 46, 51;
+    --overlay: 51, 60, 67;
+    --border: 158, 172, 188;
+    --shadow: 0, 0, 0, 0.2;
+    --menu: 40, 46, 51;
+    --menu-item-hover: 51, 60, 67;
+    --text: 182, 194, 207;
+    --subtle: 159, 173, 188;
+    --accent: 87, 157, 255;
+    --accent-muted: 28, 43, 65;
+    --accent-highlight: 133, 184, 255;
+    --scrollbar-track: 50, 57, 64;
+    --scrollbar-thumb: 69, 80, 91;
+
+    /* board page */
+    --boardpage-nav-text: 159, 173, 188;
+    --boardpage-nav-bg: 28, 32, 36, 1;
+    --boardpage-menu-hover: 51, 60, 67;
+    --boardpage-menu-active: 28, 43, 65;
+    --boardpage-menu-text-active: 87, 157, 255;
+    
+    --boardpage-accent-menu: 87, 157, 255;
+    --boardpage-accent-menu-hover: 133, 184, 255;
+
+    --board-filter: 0, 0, 0, 0.2;
+    --board-sidebar: 28, 32, 36, 0.9;
+    --board-sidebar-collapse: 28, 32, 36, 0.9;
+    --board-sidebar-text: 159, 173, 188;
+    --task-list: 16, 18, 4;
+    --task-list-btn: 40, 47, 39;
+    --task-list-scrollbar-track: 28, 32, 21;
+    --task-list-scrollbar-thumb: 50, 59, 55;
+    --task-card: 34, 39, 43;
+  }
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  /* logo */
+  --logo-filter: brightness(0) saturate(100%) invert(30%) sepia(53%) saturate(323%) hue-rotate(179deg) brightness(91%) contrast(88%);
+  --board-logo-filter: none;
+
+  /* base */
+  --base: 255, 255, 255;
+  --surface: 241, 242, 244;
+  --overlay: 220, 223, 228;
+  --border: 22, 41, 74;
+  --shadow: 0, 0, 0, 0.1;
+  --menu: 255, 255, 255;
+  --menu-item-hover: 241, 242, 244;
+  --text: 23, 43, 77;
+  --subtle: 68, 84, 111;
+  --accent: 12, 102, 228;
+  --accent-muted: 233, 242, 255;
+  --accent-highlight: 0, 85, 204;
+  --scrollbar-track: 227, 229, 234;
+  --scrollbar-thumb: 196, 201, 210;
+
+  /* board page */
+  --boardpage-nav-text: 255, 255, 255;
+  --boardpage-nav-bg: 0, 0, 0, 0.2;
+  --boardpage-menu-hover: 255, 255, 255, 0.1;
+  --boardpage-menu-active: 255, 255, 255, 0.2;
+  --boardpage-menu-text-active: 255, 255, 255;
+
+  --boardpage-accent-menu: 255, 255, 255, 0.2;
+  --boardpage-accent-menu-hover: 255, 255, 255, 0.3;
+
+  --board-filter: 0, 0, 0, 0;
+  --board-sidebar: 255, 255, 255, 0;
+  --board-sidebar-collapse: 0, 0, 0, 0.3;
+  --board-sidebar-text: 255, 255, 255;
+  --task-list: 241, 242, 244;
+  --task-list-btn: 208, 212, 219;
+  --task-list-scrollbar-track: 227, 229, 234;
+  --task-list-scrollbar-thumb: 196, 201, 210;
+  --task-card: 255, 255, 255;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* logo */
+  --logo-filter: brightness(0) saturate(100%) invert(66%) sepia(20%) saturate(225%) hue-rotate(170deg) brightness(101%) contrast(85%);
+  --board-logo-filter: brightness(0) saturate(100%) invert(66%) sepia(20%) saturate(225%) hue-rotate(170deg) brightness(101%) contrast(85%);
+
+  /* base */
+  --base: 28, 32, 36;
+  --surface: 40, 46, 51;
+  --overlay: 51, 60, 67;
+  --border: 158, 172, 188;
+  --shadow: 0, 0, 0, 0.2;
+  --menu: 40, 46, 51;
+  --menu-item-hover: 51, 60, 67;
+  --text: 182, 194, 207;
+  --subtle: 159, 173, 188;
+  --accent: 87, 157, 255;
+  --accent-muted: 28, 43, 65;
+  --accent-highlight: 133, 184, 255;
+  --scrollbar-track: 50, 57, 64;
+  --scrollbar-thumb: 69, 80, 91;
+
+  /* board page */
+  --boardpage-nav-text: 159, 173, 188;
+  --boardpage-nav-bg: 28, 32, 36, 1;
+  --boardpage-menu-hover: 51, 60, 67;
+  --boardpage-menu-active: 28, 43, 65;
+  --boardpage-menu-text-active: 87, 157, 255;
+
+  --boardpage-accent-menu: 87, 157, 255;
+  --boardpage-accent-menu-hover: 133, 184, 255;
+
+  --board-filter: 0, 0, 0, 0.2;  
+  --board-sidebar: 28, 32, 36, 0.9;
+  --board-sidebar-collapse: 28, 32, 36, 0.9;
+  --board-sidebar-text: 159, 173, 188;
+  --task-list: 16, 18, 4;
+  --task-list-btn: 40, 47, 39;
+  --task-list-scrollbar-track: 28, 32, 21;
+  --task-list-scrollbar-thumb: 50, 59, 55;
+  --task-card: 34, 39, 43;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  background-color: rgba(var(--base));
+}
+
+.expanded-link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.workspace-bg-1 {
+  background: rgb(158, 144, 240);
+  background: linear-gradient(180deg, rgba(158, 144, 240, 1) 0%, rgba(87, 157, 255, 1) 100%);
+}
+
+.workspace-bg-2 {
+  background: rgb(229, 115, 185);
+  background: linear-gradient(180deg, rgba(229, 115, 185, 1) 0%, rgba(149, 62, 116, 1) 100%);
+}
+
+.workspace-bg-3 {
+  background: rgb(244, 111, 99);
+  background: linear-gradient(180deg, rgba(244, 111, 99, 1) 0%, rgba(166, 73, 1, 1) 100%);
+}
+
+.workspace-bg-4 {
+  background: rgb(74, 204, 149);
+  background: linear-gradient(180deg, rgba(74, 204, 149, 1) 0%, rgba(34, 112, 80, 1) 100%);
+}
+
+.board-bg-base-1 {
+  background-color: #0c57b9;
+}
+
+.board-bg-base-2 {
+  background-color: #0c57b9;
+}
+
+.board-bg-base-3 {
+  background-color: #11336d;
+}
+
+.board-bg-base-4 {
+  background-color: #5641ae;
+}
+
+.board-bg-base-5 {
+  background-color: #a52d19;
+}
+
+.board-bg-base-6 {
+  background-color: #9f226c;
+}
+
+.board-bg-base-7 {
+  background-color: #1c6f4f;
+}
+
+.board-bg-base-8 {
+  background-color: #4d5d77;
+}
+
+.board-bg-base-9 {
+  background-color: #472910;
+}
+
+
+.board-bg-1 {
+  background: rgb(13, 104, 228);
+  background: linear-gradient(157deg, rgba(13, 104, 228, 1) 0%, rgba(53, 176, 196, 1) 100%);
+}
+
+.board-bg-2 {
+  background: rgb(12, 101, 226);
+  background: linear-gradient(157deg, rgba(12, 101, 226, 1) 0%, rgba(10, 53, 114, 1) 100%);
+}
+
+.board-bg-3 {
+  background: rgb(12, 50, 109);
+  background: linear-gradient(157deg, rgba(12, 50, 109, 1) 0%, rgba(195, 80, 155, 1) 100%);
+}
+
+.board-bg-4 {
+  background: rgb(112, 93, 198);
+  background: linear-gradient(157deg, rgba(112, 93, 198, 1) 0%, rgba(225, 115, 188, 1) 100%);
+}
+
+.board-bg-5 {
+  background: rgb(227, 74, 53);
+  background: linear-gradient(157deg, rgba(227, 74, 53, 1) 0%, rgba(249, 161, 61, 1) 100%);
+}
+
+.board-bg-6 {
+  background: rgb(231, 116, 185);
+  background: linear-gradient(157deg, rgba(231, 116, 185, 1) 0%, rgba(247, 116, 103, 1) 100%);
+}
+
+.board-bg-7 {
+  background: rgb(32, 132, 91);
+  background: linear-gradient(157deg, rgba(32, 132, 91, 1) 0%, rgba(93, 195, 204, 1) 100%);
+}
+
+.board-bg-8 {
+  background: rgb(78, 93, 120);
+  background: linear-gradient(157deg, rgba(78, 93, 120, 1) 0%, rgba(26, 46, 79, 1) 100%);
+}
+
+.board-bg-9 {
+  background: rgb(69, 41, 16);
+  background: linear-gradient(157deg, rgba(69, 41, 16, 1) 0%, rgba(168, 42, 25, 1) 100%);
+}
+
+.board-bg-solid-base-1 {
+  background-color: #0066a0;
+}
+
+.board-bg-solid-base-2 {
+  background-color: #b0792c;
+}
+
+.board-bg-solid-base-3 {
+  background-color: #448030;
+}
+
+.board-bg-solid-base-4 {
+  background-color: #943b2a;
+}
+
+.board-bg-solid-base-5 {
+  background-color: #735185;
+}
+
+.board-bg-solid-base-6 {
+  background-color: #ac4c7a;
+}
+
+.board-bg-solid-base-7 {
+  background-color: #3fa05a;
+}
+
+.board-bg-solid-base-8 {
+  background-color: #0092ab;
+}
+
+.board-bg-solid-base-9 {
+  background-color: #6e767a;
+}
+
+.board-bg-solid-1 {
+  background-color: #0079bf;
+}
+
+.board-bg-solid-2 {
+  background-color: #d29034;
+}
+
+.board-bg-solid-3 {
+  background-color: #519839;
+}
+
+.board-bg-solid-4 {
+  background-color: #b04632;
+}
+
+.board-bg-solid-5 {
+  background-color: #89609e;
+}
+
+.board-bg-solid-6 {
+  background-color: #cd5a91;
+}
+
+.board-bg-solid-7 {
+  background-color: #4bbf6b;
+}
+
+.board-bg-solid-8 {
+  background-color: #00aecc;
+}
+
+.board-bg-solid-9 {
+  background-color: #838c91;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 9px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: rgb(var(--scrollbar-track));
+  border-radius: 9999px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(var(--scrollbar-thumb));
+  border-radius: 9999px;
+}
+
+@keyframes submenu-animation {
+  from {
+    translate: 316px 0;
+  }
+
+  to {
+    translate: 0;
+  }
+}
+
+.submenu-animation {
+  animation: submenu-animation ease 0.2s;
+}

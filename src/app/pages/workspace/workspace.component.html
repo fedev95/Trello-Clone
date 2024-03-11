@@ -1,0 +1,19 @@
+@if (workspace) {
+  <div class="px-4 gap-4 flex flex-col text-cc-text w-full">
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-3 items-center">
+        <app-workspace-icon [workspace]="workspace" sizeClasses="size-14 text-4xl rounded"></app-workspace-icon>
+        <h2 class="text-xl font-semibold">{{workspace.title}}</h2>
+      </div>
+      <p class="text-xs text-cc-subtle leading-5">{{workspace.description}}</p>
+    </div>
+    <hr class="border-t border-cc-border/15">
+    <div class="flex flex-col gap-4">
+      <div class="flex gap-3 items-center">
+        <app-user-icon dimensions="size-6"></app-user-icon>
+        <h3 class="font-bold">Your boards</h3>
+      </div>
+      <app-boards-cards-grid [workspace]="workspace"></app-boards-cards-grid>
+    </div>
+  </div>
+}

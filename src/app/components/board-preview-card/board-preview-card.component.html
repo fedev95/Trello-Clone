@@ -1,0 +1,6 @@
+<div [ngClass]="board.background + ' h-24 rounded-[3px] flex overflow-hidden'" [style]="backgroundTransition">
+  <a routerLink="/board/{{workspaceId}}/{{board.id}}" (click)="setTransitions()"
+    class="h-full w-full p-2 hover:bg-black/15 duration-200">
+    <div class="font-bold text-white text-wrap max-h-10 overflow-hidden line-clamp-2 leading-5">{{board.title}}</div>
+  </a>
+</div>

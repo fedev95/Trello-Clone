@@ -1,0 +1,13 @@
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 9px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background-color: rgba( 50, 57, 64, 50%);
+  border-radius: 9999px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(69, 80, 91, 50%);
+  border-radius: 9999px;
+}

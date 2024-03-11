@@ -1,0 +1,18 @@
+<div class="h-full w-[272px] flex flex-col">
+  <div class="bg-cc-task-list h-max rounded-xl text-cc-text overflow-hidden flex flex-col" (mousedown)="$event.stopImmediatePropagation()">
+    <div class="flex p-2 text-sm font-medium">
+      <p class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
+    </div>
+    <div id="card-list" class="flex flex-col mx-1 px-1 gap-2 overflow-auto">
+      @for (card of list.cards; track $index) {
+      <app-task-card [card]="card"></app-task-card>
+      }
+    </div>
+    <div class="flex p-2 text-sm font-medium">
+      <button class="w-full py-2 px-3 text-start text-cc-subtle hover:bg-cc-task-list-btn rounded-lg flex gap-2 items-center">
+        <app-plus-icon dimensions="size-3"></app-plus-icon>
+        Add a card
+      </button>
+    </div>
+  </div>
+</div>

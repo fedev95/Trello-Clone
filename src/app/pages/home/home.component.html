@@ -1,0 +1,20 @@
+<div class="bg-cc-base flex flex-grow py-10">
+  <div class="max-w-[1145px] flex items-start w-full mx-auto">
+    <div class="hidden sm:flex flex-col min-w-[288px] max-w-[288px] w-full text-sm text-cc-text px-4 sticky top-10">
+      <a routerLink="/boards" routerLinkActive="bg-cc-accent-muted hover:bg-cc-accent-muted/100 text-cc-accent" class="py-2 px-3 hover:bg-cc-overlay font-semibold rounded-md flex items-center gap-3 duration-200">
+        <app-trello-icon dimensions="w-3 h-3"></app-trello-icon>
+        Boards
+      </a>
+      <div class="mt-1 flex flex-col gap-1 border-t border-cc-border/15 pt-5">
+        <p class="text-xs text-cc-subtle font-semibold pb-2">Workspaces</p>
+        @for (workspace of (data | async).workspaces; track $index) {
+          <a [routerLink]="'/workspace/' + workspace.id" class="flex hover:bg-cc-overlay rounded-md gap-2 items-center p-2 font-semibold duration-200" routerLinkActive="bg-cc-accent-muted hover:bg-cc-accent-muted/100 text-cc-accent">
+            <app-workspace-icon [workspace]="workspace" sizeClasses="size-6 text-sm rounded"></app-workspace-icon>
+            {{workspace.title}}
+          </a>
+        }
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+#trello-logo {
+  background-image: url(./../../../assets/trello-logo.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#trello-logo:hover {
+  background-image: url(./../../../assets/trello-logo-hover.gif);
+}
+
+.logo-filter {
+  filter: var(--logo-filter);
+}
+
+.board-logo-filter {
+  filter: var(--board-logo-filter);
+}

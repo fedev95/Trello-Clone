@@ -1,0 +1,12 @@
+@keyframes menu-animation {
+  from {
+    translate: -316px 0;
+  }
+  to {
+    translate: 0;
+  }
+}
+
+.menu-animation {
+  animation: menu-animation ease 0.2s;
+}
