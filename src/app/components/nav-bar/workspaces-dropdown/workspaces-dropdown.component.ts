@@ -1,9 +1,7 @@
 import { CdkMenuTrigger, CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { AppService } from '../../../services/app.service';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FirstLetterPipe } from "../../../pipes/first-letter.pipe";
 import { ChevronIconComponent } from "../../../icons/chevron-icon/chevron-icon.component";
 import { WorkspaceIconComponent } from "../../workspace-icon/workspace-icon.component";
 
@@ -13,22 +11,26 @@ import { WorkspaceIconComponent } from "../../workspace-icon/workspace-icon.comp
     templateUrl: './workspaces-dropdown.component.html',
     styleUrl: './workspaces-dropdown.component.css',
     imports: [
-        CommonModule,
         RouterModule,
         CdkMenuTrigger,
         CdkMenu,
         CdkMenuItem,
-        FirstLetterPipe,
         ChevronIconComponent,
         WorkspaceIconComponent
     ]
 })
-export class WorkspacesDropdownComponent {
+export class WorkspacesDropdownComponent implements OnInit {
 
   @Input({required: true}) boardPage!: boolean;
+  @Input({ required: true }) board!: boolean;
 
   appService = inject(AppService);
+  data: any;
 
-  data = this.appService.dataObservable;
+  ngOnInit(): void {
+    this.appService.getData().subscribe({
+      next: (res) => this.data = res
+    });
+  }
 
 }

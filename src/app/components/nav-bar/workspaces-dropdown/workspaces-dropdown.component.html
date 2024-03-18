@@ -1,13 +1,13 @@
 <button 
   [cdkMenuTriggerFor]="menu" 
-  class="{{boardPage? 'hover:bg-cc-boardpage-menu-hover aria-expanded:bg-cc-boardpage-menu-active aria-expanded:text-cc-boardpage-menu-text-active' : 'hover:bg-cc-overlay aria-expanded:bg-cc-accent-muted aria-expanded:text-cc-accent'}} px-3 text-sm rounded-sm h-full flex items-center gap-2">
+  class="{{boardPage && board? 'hover:bg-cc-boardpage-menu-hover aria-expanded:bg-cc-boardpage-menu-active aria-expanded:text-cc-boardpage-menu-text-active' : 'hover:bg-cc-overlay aria-expanded:bg-cc-accent-muted aria-expanded:text-cc-accent'}} px-3 text-sm rounded-sm h-full flex items-center gap-2">
   <span>Workspaces</span>
   <app-chevron-icon dimensions="size-3"></app-chevron-icon>
 </button>
 <ng-template #menu>
   <div class="w-[304px] mt-2 p-3 flex flex-col gap-1 bg-cc-menu rounded-xl border border-cc-border/15 shadow-xl shadow-cc-shadow" cdkMenu>
     <p class="text-xs font-semibold ms-2 mt-1 mb-2 text-cc-subtle">Your workspaces</p>
-    @for (workspace of (data | async).workspaces; track $index) {
+    @for (workspace of data.workspaces; track $index) {
       <a cdkMenuItem routerLink="workspace/{{workspace.id}}" class="flex gap-3 items-center p-2 hover:bg-cc-menu-item-hover rounded-md">
         <app-workspace-icon [workspace]="workspace" sizeClasses="min-h-10 min-w-10 text-xl rounded"></app-workspace-icon>
         <span class="text-nowrap truncate text-sm font-medium text-cc-text">{{workspace.title}}</span>
