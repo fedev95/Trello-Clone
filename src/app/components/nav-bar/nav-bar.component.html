@@ -1,33 +1,18 @@
-<!-- <nav id="nav-bar" class="{{boardPage? 'text-cc-nav-text bg-cc-nav-bg' : 'bg-cc-base text-cc-subtle'}} flex font-semibold justify-between p-2 px-3 border-b border-cc-border/15">
-  <div class="flex gap-1">
-    <a href="https://github.com/fedev95" target="_blank" aria-label="Open the GitHub repository in a new tab" class="flex items-center px-2 rounded-sm hover:bg-cc-overlay">
-      <app-github-icon dimensions="size-5"></app-github-icon>
-    </a>
-    <a routerLink="/" class="px-2 hover:bg-cc-overlay rounded-sm" aria-label="Back to home">
-      <div id="trello-logo" class="{{boardPage? 'board-logo-filter' : 'logo-filter'}} w-[72px] h-8"></div>
-    </a>
-    <app-workspaces-dropdown></app-workspaces-dropdown>
-    <app-recent-dropdown></app-recent-dropdown>
-    <app-create-dropdown class="ms-3"></app-create-dropdown>
-  </div>
-  <app-theme-dropdown></app-theme-dropdown>
-</nav> -->
-
 <div class="{{board? board.base : ''}}">
   <nav id="nav-bar"
-    class="{{boardPage? 'text-cc-boardpage-nav-text bg-cc-boardpage-nav-bg' : 'bg-cc-base text-cc-subtle'}} flex font-semibold justify-between p-2 px-3 border-b border-cc-border/15">
+    class="{{boardPage && board? 'text-cc-boardpage-nav-text bg-cc-boardpage-nav-bg duration-200' : 'bg-cc-base text-cc-subtle'}} flex font-semibold justify-between p-2 px-3 border-b border-cc-border/15">
     <div class="flex gap-1">
       <a href="https://github.com/fedev95" target="_blank" aria-label="Open the GitHub repository in a new tab"
-        class="{{boardPage? 'hover:bg-cc-boardpage-menu-hover' : 'hover:bg-cc-overlay'}} flex items-center px-2 rounded-sm">
+        class="{{boardPage && board? 'hover:bg-cc-boardpage-menu-hover' : 'hover:bg-cc-overlay'}} flex items-center px-2 rounded-sm">
         <app-github-icon dimensions="size-5"></app-github-icon>
       </a>
-      <a routerLink="/" class="{{boardPage? 'hover:bg-cc-boardpage-menu-hover' : 'hover:bg-cc-overlay'}} px-2 rounded-sm" aria-label="Back to home">
-        <div id="trello-logo" class="{{boardPage? 'board-logo-filter' : 'logo-filter'}} w-[72px] h-8"></div>
+      <a routerLink="/" class="{{boardPage && board? 'hover:bg-cc-boardpage-menu-hover' : 'hover:bg-cc-overlay'}} px-2 rounded-sm" aria-label="Back to home">
+        <div id="trello-logo" class="{{boardPage && board? 'board-logo-filter' : 'logo-filter'}} w-[72px] h-8"></div>
       </a>
-      <app-workspaces-dropdown [boardPage]="boardPage"></app-workspaces-dropdown>
-      <app-recent-dropdown [boardPage]="boardPage"></app-recent-dropdown>
-      <app-create-dropdown class="ms-3" [boardPage]="boardPage"></app-create-dropdown>
+      <app-workspaces-dropdown [boardPage]="boardPage" [board]="board"></app-workspaces-dropdown>
+      <app-recent-dropdown [boardPage]="boardPage" [board]="board"></app-recent-dropdown>
+      <app-create-dropdown class="ms-3" [boardPage]="boardPage" [board]="board"></app-create-dropdown>
     </div>
-    <app-theme-dropdown [boardPage]="boardPage"></app-theme-dropdown>
+    <app-theme-dropdown [boardPage]="boardPage" [board]="board"></app-theme-dropdown>
   </nav>
 </div>
