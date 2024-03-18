@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FirstLetterPipe } from "../../pipes/first-letter.pipe";
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { MenuDotsIconComponent } from "../../icons/menu-dots/menu-dots-icon.component";
+import { RouterModule } from '@angular/router';
 import { ChevronIconComponent } from "../../icons/chevron-icon/chevron-icon.component";
 import { WorkspaceIconComponent } from "../workspace-icon/workspace-icon.component";
+import { MinusIconComponent } from "../../icons/minus-icon/minus-icon.component";
 
 @Component({
     selector: 'app-board-sidebar',
@@ -15,9 +15,9 @@ import { WorkspaceIconComponent } from "../workspace-icon/workspace-icon.compone
         CommonModule,
         RouterModule,
         FirstLetterPipe,
-        MenuDotsIconComponent,
         ChevronIconComponent,
-        WorkspaceIconComponent
+        WorkspaceIconComponent,
+        MinusIconComponent
     ]
 })
 export class BoardSidebarComponent {
@@ -26,23 +26,5 @@ export class BoardSidebarComponent {
 
   @Input({required: true}) workspace: any;
   @Input({ required: true }) bgBase: any;
-
-  constructor(private router: Router) { }
-
-  bol: boolean = false;
-
-
-  ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const currentRoute = this.router.url.split('?')[0].split('/').filter(segment => segment !== '');
-        if (currentRoute[0] == 'board') {
-          this.bol = true;
-        } else {
-          this.bol = false;
-        }
-      }
-    });
-  }
 
 }

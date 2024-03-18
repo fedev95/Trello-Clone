@@ -1,43 +1,3 @@
-<!-- <div class="{{sidebar? 'min-w-[260px]' : 'min-w-[16px]'}} h-full relative duration-200 bg-cc-board-sidebar text-cc-board-sidebar-text border-r border-[hsla(211,18%,68%,0.16)]">
-  <div class="h-full w-full {{sidebar? 'block' : 'invisible delay-200'}}">
-    <div class="flex flex-col h-full absolute right-0 w-full min-w-[260px]">
-      <div class="flex items-center py-2 px-3 min-h-14 border-b border-[hsla(211,18%,68%,0.16)] justify-between">
-        <a routerLink="/workspace/{{workspace.id}}" class="flex items-center gap-2">
-          <app-workspace-icon [workspace]="workspace" sizeClasses="size-8 text-xl rounded"></app-workspace-icon>
-          <span class="text-sm font-semibold">{{workspace.title}}</span>
-        </a>
-        <button (click)="sidebar = !sidebar" class="size-7 aspect-square rounded-sm bg-[#1d2125] hover:bg-white/10 rotate-90 flex items-center justify-center text-white" title="Collapse sidebar">
-          <span class="sr-only">Close menu</span>
-          <app-chevron-icon dimensions="size-[10px]"></app-chevron-icon>
-        </button>
-      </div>
-      <div class="flex flex-col flex-grow overflow-auto sidebar-scrollbar pb-10">
-        <div class="flex justify-between py-4 px-3">
-          <p class="text-sm font-semibold">Your boards</p>
-        </div>
-        <div class="flex flex-col">
-          @for (board of workspace.boards; track $index) {
-            <div class="flex items-center py-1 px-3 gap-2 text-sm hover:bg-white/10 [&>button]:hover:min-w-7 relative" routerLinkActive="bg-white/20">
-              <div class="min-w-6 min-h-5 rounded-sm {{board.background}}"></div>
-              <a routerLink="/board/{{workspace.id}}/{{board.id}}" class="truncate expanded-link">{{board.title}}</a>
-              <button class="flex ms-auto w-0 h-7 overflow-hidden focus:min-w-7 justify-center items-center aspect-square rounded-sm hover:bg-white/15 relative">
-                <span class="sr-only">Workspace menu options</span>
-                <app-menu-dots-icon dimensions="size-3"></app-menu-dots-icon>
-              </button>
-            </div>
-          }
-        </div>
-      </div>
-    </div>
-  </div>
-  <button (click)="sidebar = !sidebar" class="[&>span]:hover:bg-[#ffffff60] w-full h-full absolute top-0 left-0 flex {{sidebar? 'invisible' : 'delay-200 block'}}" title="Expand sidebar" aria-label="Workspace navigation">
-    <span
-      class="size-6 bg-[#1d2125] border border-[hsla(211,18%,68%,0.16)] aspect-square flex justify-center items-center -rotate-90 text-white rounded-full mt-4 ms-1">
-      <app-chevron-icon dimensions="size-[10px]"></app-chevron-icon>
-    </span>
-  </button>
-</div> -->
-
 <div class="{{bgBase}} h-full">
   <div
     class="{{sidebar? 'min-w-[260px]' : 'min-w-[16px]'}} h-full relative duration-200 bg-cc-board-sidebar text-cc-board-sidebar-text border-r border-[hsla(211,18%,68%,0.16)]">
@@ -65,10 +25,9 @@
               routerLinkActive="bg-white/20">
               <div class="min-w-6 min-h-5 rounded-sm {{board.background}}"></div>
               <a routerLink="/board/{{workspace.id}}/{{board.id}}" class="truncate expanded-link">{{board.title}}</a>
-              <button
+              <button title="Close workspace"
                 class="flex ms-auto w-0 h-7 overflow-hidden focus:min-w-7 justify-center items-center aspect-square rounded-sm hover:bg-white/15 relative">
-                <span class="sr-only">Workspace menu options</span>
-                <app-menu-dots-icon dimensions="size-3"></app-menu-dots-icon>
+                <app-minus-icon dimensions="size-3"></app-minus-icon>
               </button>
             </div>
             }
