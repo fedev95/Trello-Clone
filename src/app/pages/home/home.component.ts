@@ -1,8 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppService } from '../../services/app.service';
-import { CommonModule } from '@angular/common';
-import { FirstLetterPipe } from "../../pipes/first-letter.pipe";
 import { TrelloIconComponent } from "../../icons/trello-icon/trello-icon.component";
 import { WorkspaceIconComponent } from "../../components/workspace-icon/workspace-icon.component";
 
@@ -14,15 +12,19 @@ import { WorkspaceIconComponent } from "../../components/workspace-icon/workspac
     host: { 'class': 'flex flex-grow flex-col overflow-auto' },
     imports: [
         RouterModule,
-        CommonModule,
-        FirstLetterPipe,
         TrelloIconComponent,
         WorkspaceIconComponent
     ]
 })
-export default class HomeComponent {
-
+export default class HomeComponent implements OnInit {
+  
   appService = inject(AppService);
-  data = this.appService.dataObservable;
+  data: any;
+  
+  ngOnInit(): void {
+    this.appService.getData().subscribe({
+      next: (res) =>  this.data = res
+    });
+  }
   
 }
