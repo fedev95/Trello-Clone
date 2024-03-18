@@ -6,9 +6,9 @@ import { MenuDotsIconComponent } from "../../icons/menu-dots/menu-dots-icon.comp
 import { BoardSidebarComponent } from "../../components/board-sidebar/board-sidebar.component";
 import { BoardSettingsComponent } from "../../components/board-settings/board-settings.component";
 import { BoardService } from '../../services/board.service';
-import { PlusIconComponent } from "../../icons/plus-icon/plus-icon.component";
-import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component";
 import { NewListFormComponent } from "../../components/new-list-form/new-list-form.component";
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
     selector: 'app-board',
@@ -22,40 +22,61 @@ import { NewListFormComponent } from "../../components/new-list-form/new-list-fo
         MenuDotsIconComponent,
         BoardSidebarComponent,
         BoardSettingsComponent,
-        PlusIconComponent,
-        XmarkIconComponent,
         NewListFormComponent
     ]
 })
 export default class BoardComponent implements OnInit {
 
-  @Input()
-  set 'workspace-id'(heroId: string) {
-    this.workspaceId = heroId; 
-  }
+  // @Input()
+  // set 'workspace-id'(workspaceId: string) {
+  //   this.workspaceId = workspaceId;
+  //   this.getBoard();
+  // }
+  // @Input()
+  // set 'board-id'(boardId: string) {
+  //   this.boardId = boardId;
+  //   this.getBoard();
+  // }
 
-  @Input()
-  set 'board-id'(heroId: string) {
-    this.boardId = heroId;
-    this.builder = false;
-    this.appService.setSelectedBoard(this.workspaceId, this.boardId);
-    this.appService.getWorkspace().subscribe({
-      next: (res) => this.workspace = res
-    })
-    this.appService.getBoard().subscribe({
-      next: (res) => this.board = res
-    })
-  }
+  constructor(private titleService: Title) {}
 
   appService = inject(AppService);
-  workspaceId!: string;
-  boardId!: string;
+  boardService = inject(BoardService);
+  route = inject(ActivatedRoute);
+  workspaceId!: any;
+  boardId!: any;
   workspace: any;
   board: any;
+  settings: any;
 
-  builder: boolean = false;
+  ngOnInit(): void {
+    this.settings = this.boardService.getSettingsSidebar();
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.workspaceId = params.get('workspace-id');
+      this.boardId = params.get('board-id');
+      this.getBoard();
+    });
+  }
 
-  // ==============================================
+  setSettingsSidebar(value: boolean) {
+    this.boardService.setSettingsSidebar(value);
+  }
+
+  getBoard() {
+    this.appService.getWorkspace(this.workspaceId).subscribe({
+      next: (res) => this.workspace = res
+    });
+    this.appService.setBoard(this.workspaceId, this.boardId);
+    this.appService.getBoard().subscribe({
+      next: (res) => {
+        if (res) {
+          this.board = res
+          this.titleService.setTitle(`${this.board.title} | Trello`);
+        }
+      }
+    });
+    this.appService.checkRecentBoards(this.workspaceId, this.boardId);
+  }
 
   pointerScroll() {
     let isDrag = true;
@@ -69,20 +90,5 @@ export default class BoardComponent implements OnInit {
     addEventListener("pointermove", drag);
     addEventListener("pointerup", dragEnd);
   };
-
-  // ============
-
-  boardService = inject(BoardService);
-
-  menu: boolean = false;
-  settings: any;
-
-  ngOnInit(): void {
-    this.settings = this.boardService.getSettingsSidebar();
-  }
-
-  setSettingsSidebar(value: boolean) {
-    this.boardService.setSettingsSidebar(value);
-  }
 
 }
