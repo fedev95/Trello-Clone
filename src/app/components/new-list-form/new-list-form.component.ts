@@ -1,7 +1,8 @@
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild, inject } from '@angular/core';
 import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component";
 import { PlusIconComponent } from "../../icons/plus-icon/plus-icon.component";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AppService } from '../../services/app.service';
 
 @Component({
     selector: 'app-new-list-form',
@@ -18,7 +19,9 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 export class NewListFormComponent {
 
   @Input({required: true}) board: any;
-
+  @Input({ required: true }) workspaceId: any;
+  @Input({ required: true }) boardId: any;
+  appService = inject(AppService);
   builder: boolean = false;
 
   @ViewChild('form') menux!: ElementRef;
@@ -29,24 +32,25 @@ export class NewListFormComponent {
     }
   }
 
-  newList: any = {
-    title: '',
-    cards: []
-  }
-
   newListForm = new FormGroup({
-    listTitle: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    cards: new FormControl([])
   });
 
   formFunc() {
-    
+    this.appService.createList(this.workspaceId, this.boardId, this.newListForm.getRawValue());
+    this.newListForm.patchValue({
+      title: '',
+      cards: []
+    });
   }
 
   cancel() {
     this.builder = false;
     this.newListForm.patchValue({
-      listTitle: ''
-    })
+      title: '',
+      cards: []
+    });
   }
 
 }
