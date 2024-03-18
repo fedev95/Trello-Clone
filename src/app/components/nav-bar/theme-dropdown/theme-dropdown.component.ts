@@ -22,6 +22,7 @@ import { ThemeDarkComponent } from "../../../icons/theme-dark/theme-dark.compone
 export class ThemeDropdownComponent implements OnInit {
 
   @Input({required: true}) boardPage!: boolean;
+  @Input({ required: true }) board!: boolean;
 
   themeService = inject(ThemeService);
   theme: any;
