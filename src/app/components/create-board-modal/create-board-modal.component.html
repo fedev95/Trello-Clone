@@ -1,0 +1,71 @@
+<dialog id="create-board-modal" class="max-w-[304px] w-full bg-cc-menu rounded-xl p-3 border border-cc-border/15 text-cc-subtle text-xs">
+  <div class="flex justify-center items-center relative h-9 mb-2">
+    <h2 class="text-sm font-medium">Create board</h2>
+    <button (click)="closeModal()" class="absolute p-2 rounded-lg right-0 hover:bg-cc-menu-item-hover" aria-label="Close modal">
+      <app-xmark-icon dimensions="size-3"></app-xmark-icon>
+    </button>
+  </div>
+  <div class="flex justify-center">
+    <div class="{{newBoardForm.getRawValue().background}} p-2 rounded">
+      <img src="./../../../assets/board-bg-preview.svg" alt="">
+    </div>
+  </div>
+  <form [formGroup]="newBoardForm" (ngSubmit)="createBoard()" class="mt-5 flex flex-col gap-4">
+
+    <div class="flex flex-col gap-2">
+      <p class="font-bold">Background</p>
+      <div class="grid grid-cols-6 gap-2">
+        @for (background of boardBackgrounds.gradients; track $index) {
+          <button type="button" (click)="setBackgrounds(background)" class="rounded h-8 relative {{background.class}}">
+            <span class="absolute h-full w-full flex items-center justify-center top-0 left-0 hover:bg-cc-base/20 text-white">
+              @if (newBoardForm.getRawValue().background === background.class) {
+                <app-check-icon dimensions="size-3"></app-check-icon>
+              }
+            </span>
+          </button>
+        }
+        @for (background of boardBackgrounds.solids; track $index) {
+          <button type="button" (click)="setBackgrounds(background)" class="rounded h-8 relative {{background.class}}">
+            <span class="absolute h-full w-full flex items-center justify-center top-0 left-0 hover:bg-cc-base/20 text-white">
+              @if (newBoardForm.getRawValue().background === background.class) {
+                <app-check-icon dimensions="size-3"></app-check-icon>
+              }
+            </span>          
+          </button>
+        }
+      </div>      
+    </div>
+
+    <label for="title" class="flex flex-col gap-2">
+      <p class="font-bold text-xs">Board title <span class="text-red-500">*</span></p>
+      <input type="text" formControlName="title" autofocus class="{{newBoardForm.get('title')?.errors? 'border-red-500': ''}} py-[6px] hover:bg-cc-surface rounded bg-cc-base outline-none px-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm">
+      @if (newBoardForm.get('title')?.errors) {
+        <p class="text-sm font-semibold">👋 Board title is required</p>
+      }
+    </label>
+
+    @if (data.workspaces) {
+      <div class="flex flex-col gap-2 relative">
+        <p class="font-bold">Workspace</p>
+        <div #workspaceList class="flex flex-col gap-2">
+          <button type="button" (click)="workspacesList = !workspacesList" class="{{workspacesList? 'border-cc-accent' : 'border-cc-border/40'}} text-sm font-semibold py-[6px] hover:bg-cc-surface rounded bg-cc-base outline-none px-2 border-2 focus:border-cc-accent flex justify-between items-center gap-2">
+            <span class="truncate w-full text-start">{{(createBoardWorkspace | workspaceData).title}}</span>
+            <app-chevron-icon dimensions="size-3"></app-chevron-icon>
+          </button>
+          @if (workspacesList) {
+            <div class="rounded-lg border border-cc-border/15 py-2">
+              @for (workspace of data.workspaces; track $index) {
+                <button type="button" (click)="createBoardWorkspace = workspace.id; workspacesList = false" class="{{createBoardWorkspace == workspace.id? 'bg-cc-accent-muted text-cc-accent' : ''}} w-full p-2 text-start hover:bg-cc-overlay text-sm">{{workspace.title}}</button>
+              }
+            </div>
+          }
+        </div>
+        @if ((createBoardWorkspace | workspaceData).boards.length == 5) {
+          <p class="text-sm font-semibold text-red-500">This Workspace has reached the maximum number of boards.</p>
+        }
+      </div>
+    }
+
+    <button [disabled]="newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5" class="{{newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5? 'bg-cc-overlay' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-2 text-sm font-medium" type="submit">Create</button>
+  </form>
+</dialog>
