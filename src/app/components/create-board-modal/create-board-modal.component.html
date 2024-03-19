@@ -1,7 +1,7 @@
-<dialog id="create-board-modal" class="max-w-[304px] w-full bg-cc-menu rounded-xl p-3 border border-cc-border/15 text-cc-subtle text-xs">
+<div popover id="create-board-modal" class="max-w-[304px] w-full bg-cc-menu rounded-xl p-3 border border-cc-border/15 text-cc-subtle text-xs">
   <div class="flex justify-center items-center relative h-9 mb-2">
     <h2 class="text-sm font-medium">Create board</h2>
-    <button (click)="closeModal()" class="absolute p-2 rounded-lg right-0 hover:bg-cc-menu-item-hover" aria-label="Close modal">
+    <button popovertarget="create-board-modal" popovertargetaction="hide" class="absolute p-2 rounded-lg right-0 hover:bg-cc-menu-item-hover" aria-label="Close modal">
       <app-xmark-icon dimensions="size-3"></app-xmark-icon>
     </button>
   </div>
@@ -66,6 +66,6 @@
       </div>
     }
 
-    <button [disabled]="newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5" class="{{newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5? 'bg-cc-overlay' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-2 text-sm font-medium" type="submit">Create</button>
+    <button popovertarget="create-board-modal" popovertargetaction="hide" [disabled]="newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5" class="{{newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5? 'bg-cc-overlay' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-2 text-sm font-medium" type="submit">Create</button>
   </form>
-</dialog>
+</div>

@@ -30,6 +30,7 @@ export class CreateBoardModalComponent implements OnInit {
   data: any;
   workspacesList: boolean = false;
   createBoardWorkspace: any;
+  modal: any;
 
   @ViewChild('workspaceList') menux!: ElementRef;
   @HostListener('document:click', ['$event'])
@@ -56,14 +57,14 @@ export class CreateBoardModalComponent implements OnInit {
     this.appService.getCreateBoardWorkspace().subscribe({
       next: (res) => this.createBoardWorkspace = res
     });
-    let modal = document.getElementById('create-board-modal');
-    modal?.addEventListener("close", (e) => {
+    this.modal = document.getElementById('create-board-modal');
+    this.modal?.addEventListener("toggle", () => {
       this.newBoardForm.patchValue({
         id: 0,
         base: 'board-bg-base-1',
         background: 'board-bg-1',
         title: ''
-      })
+      });
     });
   }
 
@@ -81,7 +82,7 @@ export class CreateBoardModalComponent implements OnInit {
       lists: []
     });
     this.appService.createNewBoard(this.createBoardWorkspace, this.newBoardForm.getRawValue());
-    this.closeModal();
+    this.modal?.hidePopover();
     this.router.navigate([`/board/${this.createBoardWorkspace}/${newId}`])
   }
 
@@ -92,14 +93,6 @@ export class CreateBoardModalComponent implements OnInit {
       return lastBoard.id + 1;
     } else {
       return 0;
-    }
-  }
-  
-  closeModal() {
-    let modal = document.getElementById('create-board-modal');
-    if (modal) {
-      // @ts-ignore
-      modal.close();
     }
   }
 

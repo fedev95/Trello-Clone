@@ -3,6 +3,6 @@
     <app-board-preview-card [workspaceId]="workspace.id" [board]="board"></app-board-preview-card>
   }
   @if (workspace.boards.length < 5) {
-    <button (click)="showCreateBoardModal(workspace.id)" class="h-24 text-center text-sm text-cc-text bg-cc-surface hover:bg-cc-overlay rounded-[3px] duration-200">Create new board</button>
+    <button popovertarget="create-board-modal" popovertargetaction="show" (click)="showCreateBoardModal(workspace.id)" class="h-24 text-center text-sm text-cc-text bg-cc-surface hover:bg-cc-overlay rounded-[3px] duration-200">Create new board</button>
   }
 </div>
