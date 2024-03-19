@@ -1,0 +1,319 @@
+{
+  "recent": [
+    {
+      "workspaceId": 1,
+      "boardId": 1
+    },
+    {
+      "workspaceId": 2,
+      "boardId": 3
+    }
+  ],
+  "workspaces": [
+    {
+      "id": 1,
+      "title": "Espacio de trabajo #1",
+      "iconBg": "workspace-bg-1",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse natus vel aut at! Voluptatem inventore ab facere totam enim! Optio vitae architecto aliquam magni dolorem expedita inventore nostrum. Harum quod assumenda eos. Placeat, qui asperiores blanditiis itaque eaque dignissimos praesentium ea perspiciatis ipsam sunt! Dolorum, eveniet. Sequi perspiciatis iure officiis?",
+      "boards": [
+        {
+          "id": 1,
+          "base": "board-bg-base-4",
+          "background": "board-bg-4",
+          "title": "Board #1",
+          "labels": [
+            {
+              "color": "#349A6F",
+              "title": "Lorem ipsum dolor sit"
+            }
+          ],
+          "archived": {
+            "lists": [],
+            "cards": []
+          },
+          "lists": [
+            {
+              "title": "Lorem ipsum dolor sit",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                }
+              ]
+            },
+            {
+              "title": "Lorem ipsum dolor sit",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                }
+              ]
+            },
+            {
+              "title": "Lorem ipsum dolor sit",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                }
+              ]
+            },
+            {
+              "title": "Lorem ipsum dolor sit",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit",
+                  "labels": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "base": "board-bg-base-7",
+          "background": "board-bg-7",
+          "title": "Board #2",
+          "labels": [
+            {
+              "color": "#349A6F",
+              "title": "Lorem ipsum dolor"
+            }
+          ],
+          "archived": {
+            "lists": [],
+            "cards": []
+          },
+          "lists": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      "iconBg": "workspace-bg-2",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse natus vel aut at! Voluptatem inventore ab facere totam enim! Optio vitae architecto aliquam magni dolorem expedita inventore nostrum. Harum quod assumenda eos. Placeat, qui asperiores blanditiis itaque eaque dignissimos praesentium ea perspiciatis ipsam sunt! Dolorum, eveniet. Sequi perspiciatis iure officiis?",
+      "boards": [
+        {
+          "id": 3,
+          "base": "board-bg-base-1",
+          "background": "board-bg-1",
+          "title": "Lorem ipsum dolor sit",
+          "labels": [
+            {
+              "color": "#349A6F",
+              "title": "Lorem ipsum dolor sit"
+            }
+          ],
+          "archived": {
+            "lists": [],
+            "cards": []
+          },
+          "lists": [
+            {
+              "title": "Lorem ipsum dolor sit amet",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit amet consectetur",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit amet consectetur",
+                  "labels": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "base": "board-bg-base-8",
+          "background": "board-bg-8",
+          "title": "Lorem ipsum dolor sit amet consectetur",
+          "labels": [
+            {
+              "color": "#349A6F",
+              "title": "Lorem ipsum dolor sit amet"
+            }
+          ],
+          "archived": {
+            "lists": [],
+            "cards": []
+          },
+          "lists": [
+            {
+              "title": "Lorem ipsum dolor sit amet",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit amet consectetur",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor",
+                  "description": "Lorem ipsum dolor sit amet consectetur",
+                  "labels": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "base": "board-bg-base-5",
+          "background": "board-bg-5",
+          "title": "Lorem ipsum dolor sit amet",
+          "labels": [
+            {
+              "color": "#349A6F",
+              "title": "Lorem ipsum dolor sit amet"
+            }
+          ],
+          "archived": {
+            "lists": [],
+            "cards": []
+          },
+          "lists": [
+            {
+              "title": "Lorem ipsum dolor sit amet consectetur",
+              "cards": [
+                {
+                  "title": "Lorem ipsum dolor sit",
+                  "description": "Lorem ipsum dolor sit amet consectetur",
+                  "labels": []
+                },
+                {
+                  "title": "Lorem ipsum dolor sit",
+                  "description": "Lorem ipsum dolor sit amet consectetur",
+                  "labels": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
