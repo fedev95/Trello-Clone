@@ -1,11 +1,10 @@
 import { Component, Input, inject } from '@angular/core';
 import { AppService } from '../../services/app.service';
-import { FirstLetterPipe } from "../../pipes/first-letter.pipe";
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { BoardsCardsGridComponent } from "../../components/boards-cards-grid/boards-cards-grid.component";
 import { UserIconComponent } from "../../icons/user-icon/user-icon.component";
 import { WorkspaceIconComponent } from "../../components/workspace-icon/workspace-icon.component";
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-workspace',
@@ -14,9 +13,6 @@ import { WorkspaceIconComponent } from "../../components/workspace-icon/workspac
     styleUrl: './workspace.component.css',
     host: { 'class': 'flex flex-grow' },
     imports: [
-        CommonModule,
-        FirstLetterPipe,
-        RouterModule,
         BoardsCardsGridComponent,
         UserIconComponent,
         WorkspaceIconComponent
@@ -25,17 +21,22 @@ import { WorkspaceIconComponent } from "../../components/workspace-icon/workspac
 export default class WorkspaceComponent {
 
   appService = inject(AppService);
-  paramId: any;
+  titleService = inject(Title);
+  router = inject(Router);
   workspace: any;
   
   @Input()
   set id(heroId: string) {
-    this.paramId = heroId;
-    this.appService.dataObservable.subscribe({
+    this.appService.getWorkspace(heroId).subscribe({
       next: (res) => {
-        this.workspace = res.workspaces.find((workspace: any) => workspace.id == this.paramId);
+        if (res) {
+          this.workspace = res;
+          this.titleService.setTitle(`${this.workspace.title} | Trello`);
+        } else {
+          this.router.navigate(['']);
+        }
       }
     });
-  }  
+  }
 
 }
