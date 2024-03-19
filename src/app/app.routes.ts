@@ -4,7 +4,6 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home.component'),
-    title: 'Trello',
     children: [
       {
         path: '',
@@ -19,14 +18,12 @@ export const routes: Routes = [
       {
         path: 'workspace/:id',
         loadComponent: () => import('./pages/workspace/workspace.component'),
-        title: 'workspace-name | Trello'
       },
     ]
   },
   {
     path: 'board/:workspace-id/:board-id',
     loadComponent: () => import('./pages/board/board.component'),
-    title: 'board-name | Trello'
   },
   {
     path: '**',
