@@ -1,0 +1,28 @@
+<div popover id="create-workspace-modal" class="backdrop:bg-black/80 p-4 bg-transparent max-w-[624px] w-full overflow-hidden">
+  <div class="w-full max-h-[90vh] bg-cc-menu rounded border border-cc-border/15 text-cc-subtle text-xs px-3 pb-10 relative overflow-auto">
+    <button popovertarget="create-workspace-modal" popovertargetaction="hide" class="absolute top-8 right-5">
+      <app-xmark-icon dimensions="size-4"></app-xmark-icon>
+    </button>
+    <div class="flex flex-col gap-10 max-w-[388px] w-full max-h-[90vh] mx-auto mt-16">
+      <h2 class="text-2xl font-semibold">Let's build a Workspace</h2>
+      <form [formGroup]="newWorkspaceForm" (ngSubmit)="createWorkspace()" class="flex flex-col gap-7">
+        <label for="title" class="flex flex-col gap-2">
+          <p class="font-bold text-xs">Workspace name <span class="text-cc-danger-red">*</span></p>
+          <input id="title" type="text" formControlName="title" autofocus placeholder="Taco's Co."
+            class="{{newWorkspaceForm.get('title')?.errors? 'border-cc-danger-red': ''}} hover:bg-cc-surface rounded bg-cc-base outline-none p-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm">
+          @if (newWorkspaceForm.get('title')?.errors) {
+            <p class="text-sm font-semibold">👋 Workspace name is required</p>
+          }
+        </label>
+        <label for="description" class="flex flex-col gap-2">
+          <p class="font-bold text-xs">Workspace description <span class="font-normal">Optional</span></p>
+          <textarea class="hover:bg-cc-surface rounded bg-cc-base outline-none p-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm resize-none" formControlName="description" id="description" rows="6" placeholder="Our team organizes everything here."></textarea>
+        </label>
+        <button popovertarget="create-workspace-modal" popovertargetaction="hide"
+          [disabled]="newWorkspaceForm.invalid"
+          class="{{newWorkspaceForm.invalid? 'bg-cc-overlay cursor-not-allowed' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-3 text-sm font-medium"
+          type="submit">Create</button>
+      </form>      
+    </div>
+  </div>
+</div>
