@@ -25,6 +25,7 @@
   --accent-highlight: 0, 85, 204;
   --scrollbar-track: 227, 229, 234;
   --scrollbar-thumb: 196, 201, 210;
+  --danger-red: 226, 72, 61;
 
   /* board page */
   --boardpage-nav-text: 255, 255, 255;
@@ -68,6 +69,7 @@
     --accent-highlight: 133, 184, 255;
     --scrollbar-track: 50, 57, 64;
     --scrollbar-thumb: 69, 80, 91;
+    --danger-red: 253, 152, 145;
 
     /* board page */
     --boardpage-nav-text: 159, 173, 188;
@@ -112,6 +114,7 @@
   --accent-highlight: 0, 85, 204;
   --scrollbar-track: 227, 229, 234;
   --scrollbar-thumb: 196, 201, 210;
+  --danger-red: 226, 72, 61;
 
   /* board page */
   --boardpage-nav-text: 255, 255, 255;
@@ -156,6 +159,7 @@
   --accent-highlight: 133, 184, 255;
   --scrollbar-track: 50, 57, 64;
   --scrollbar-thumb: 69, 80, 91;
+  --danger-red: 253, 152, 145;
 
   /* board page */
   --boardpage-nav-text: 159, 173, 188;

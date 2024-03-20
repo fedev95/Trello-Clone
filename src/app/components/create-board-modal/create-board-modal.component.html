@@ -37,8 +37,8 @@
     </div>
 
     <label for="title" class="flex flex-col gap-2">
-      <p class="font-bold text-xs">Board title <span class="text-red-500">*</span></p>
-      <input type="text" formControlName="title" autofocus class="{{newBoardForm.get('title')?.errors? 'border-red-500': ''}} py-[6px] hover:bg-cc-surface rounded bg-cc-base outline-none px-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm">
+      <p class="font-bold text-xs">Board title <span class="text-cc-danger-red">*</span></p>
+      <input type="text" formControlName="title" autofocus class="{{newBoardForm.get('title')?.errors? 'border-cc-danger-red': ''}} py-[6px] hover:bg-cc-surface rounded bg-cc-base outline-none px-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm">
       @if (newBoardForm.get('title')?.errors) {
         <p class="text-sm font-semibold">👋 Board title is required</p>
       }
@@ -61,7 +61,7 @@
           }
         </div>
         @if ((createBoardWorkspace | workspaceData).boards.length == 5) {
-          <p class="text-sm font-semibold text-red-500">This Workspace has reached the maximum number of boards.</p>
+          <p class="text-sm font-semibold text-cc-danger-red">This Workspace has reached the maximum number of boards.</p>
         }
       </div>
     }

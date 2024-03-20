@@ -21,15 +21,14 @@ module.exports = {
         "cc-accent-highlight": "rgba(var(--accent-highlight))",
         "cc-scrollbar-track": "rgba(var(--scrollbar-track))",
         "cc-scrollbar-thumb": "rgba(var(--scrollbar-thumb))",
+        "cc-danger-red": "rgba(var(--danger-red))",        
         "cc-boardpage-nav-text": "rgba(var(--boardpage-nav-text))",
         "cc-boardpage-nav-bg": "rgba(var(--boardpage-nav-bg))",
         "cc-boardpage-menu-hover": "rgba(var(--boardpage-menu-hover))",
         "cc-boardpage-menu-active": "rgba(var(--boardpage-menu-active))",
-        "cc-boardpage-menu-text-active": "rgba(var(--boardpage-menu-text-active))",
-        
+        "cc-boardpage-menu-text-active": "rgba(var(--boardpage-menu-text-active))",        
         "cc-boardpage-accent-menu": "rgba(var(--boardpage-accent-menu))",
         "cc-boardpage-accent-menu-hover": "rgba(var(--boardpage-accent-menu-hover))",
-
         "cc-board-filter": "rgba(var(--board-filter))",
         "cc-board-sidebar": "rgba(var(--board-sidebar))",
         "cc-board-sidebar-collapse": "rgba(var(--board-sidebar-collapse))",
