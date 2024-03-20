@@ -83,7 +83,7 @@ export class CreateBoardModalComponent implements OnInit {
     });
     this.appService.createNewBoard(this.createBoardWorkspace, this.newBoardForm.getRawValue());
     this.modal?.hidePopover();
-    this.router.navigate([`/board/${this.createBoardWorkspace}/${newId}`])
+    this.router.navigate([`/board/${this.createBoardWorkspace}/${newId}`]);
   }
 
   createId() {

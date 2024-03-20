@@ -72,7 +72,7 @@
         }
         <button popovertarget="create-board-modal" popovertargetaction="hide"
           [disabled]="newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5"
-          class="{{newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5? 'bg-cc-overlay' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-2 text-sm font-medium"
+          class="{{newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5? 'bg-cc-overlay cursor-not-allowed' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-2 text-sm font-medium"
           type="submit">Create</button>
       </form>
     </div>
