@@ -22,6 +22,11 @@ export class BoardsCardsGridComponent {
 
   showCreateBoardModal(workspaceId: number) {
     this.appService.setCreateBoardWorkspace(workspaceId);
+    let modal = document.getElementById('create-board-modal');
+    if (modal) {
+      // @ts-ignore
+      modal.showModal();
+    }
   }
 
 }

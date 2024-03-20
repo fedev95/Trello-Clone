@@ -30,6 +30,19 @@ export class CreateDropdownComponent {
 
   showCreateBoardModal() {
     this.appService.setCreateBoardWorkspace();
+    let modal = document.getElementById('create-board-modal');
+    if (modal) {
+      // @ts-ignore
+      modal.showModal();
+    }
+  }
+
+  showCreateWorkspaceModal() {
+    let modal = document.getElementById('create-workspace-modal');
+    if (modal) {
+      // @ts-ignore
+      modal.showModal();
+    }
   }
 
 }

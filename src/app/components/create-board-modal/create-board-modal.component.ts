@@ -58,7 +58,7 @@ export class CreateBoardModalComponent implements OnInit {
       next: (res) => this.createBoardWorkspace = res
     });
     this.modal = document.getElementById('create-board-modal');
-    this.modal?.addEventListener("toggle", () => {
+    this.modal?.addEventListener("close", () => {
       this.newBoardForm.patchValue({
         id: 0,
         base: 'board-bg-base-1',
@@ -82,7 +82,7 @@ export class CreateBoardModalComponent implements OnInit {
       lists: []
     });
     this.appService.createNewBoard(this.createBoardWorkspace, this.newBoardForm.getRawValue());
-    this.modal?.hidePopover();
+    this.closeModal();
     this.router.navigate([`/board/${this.createBoardWorkspace}/${newId}`]);
   }
 
@@ -93,6 +93,13 @@ export class CreateBoardModalComponent implements OnInit {
       return lastBoard.id + 1;
     } else {
       return 0;
+    }
+  }
+
+  closeModal() {
+    if (this.modal) {
+      // @ts-ignore
+      this.modal.close();
     }
   }
 

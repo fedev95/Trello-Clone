@@ -1,9 +1,8 @@
-<div popover id="create-board-modal" class="bg-transparent max-w-[304px] w-full p-0">
+<dialog id="create-board-modal" class="bg-transparent max-w-[304px] w-full p-0">
   <div class="flex flex-col max-h-[90vh] bg-cc-menu rounded-xl p-0 border border-cc-border/15 text-cc-subtle text-xs">
     <div class="flex justify-center items-center relative min-h-10 my-1 mx-2">
       <h2 class="text-sm font-medium">Create board</h2>
-      <button popovertarget="create-board-modal" popovertargetaction="hide"
-        class="absolute p-2 rounded-lg right-0 hover:bg-cc-menu-item-hover" aria-label="Close modal">
+      <button (click)="closeModal()" class="absolute p-2 rounded-lg right-0 hover:bg-cc-menu-item-hover" aria-label="Close modal">
         <app-xmark-icon dimensions="size-3"></app-xmark-icon>
       </button>
     </div>
@@ -70,11 +69,11 @@
           }
         </div>
         }
-        <button popovertarget="create-board-modal" popovertargetaction="hide"
+        <button
           [disabled]="newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5"
           class="{{newBoardForm.invalid || (createBoardWorkspace | workspaceData).boards.length == 5? 'bg-cc-overlay cursor-not-allowed' : 'bg-cc-accent hover:bg-cc-accent-highlight'}} rounded text-cc-base py-2 text-sm font-medium"
           type="submit">Create</button>
       </form>
     </div>
   </div>
-</div>
+</dialog>

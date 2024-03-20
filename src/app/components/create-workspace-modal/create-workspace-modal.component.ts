@@ -35,7 +35,7 @@ export class CreateWorkspaceModalComponent implements OnInit {
       next: (res) => this.data = res
     });
     this.modal = document.getElementById('create-workspace-modal');
-    this.modal?.addEventListener("toggle", () => {
+    this.modal?.addEventListener("close", () => {
       this.newWorkspaceForm.patchValue({
         id: 0,
         title: '',
@@ -53,7 +53,7 @@ export class CreateWorkspaceModalComponent implements OnInit {
       id: newId,
       iconBg: iconBg
     });
-    this.modal?.hidePopover();
+    this.closeModal();
     this.appService.createNewWorkspace(this.newWorkspaceForm.getRawValue());
     this.router.navigate([`/workspace/${newId}`]);
   }
@@ -70,6 +70,13 @@ export class CreateWorkspaceModalComponent implements OnInit {
   generateIconBg() {
     let randomNum = Math.floor(Math.random() * 4) + 1;
     return randomNum;
+  }
+
+  closeModal() {
+    if (this.modal) {
+      // @ts-ignore
+      this.modal.close();
+    }
   }
 
 }
