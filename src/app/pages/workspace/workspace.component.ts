@@ -5,6 +5,8 @@ import { UserIconComponent } from "../../icons/user-icon/user-icon.component";
 import { WorkspaceIconComponent } from "../../components/workspace-icon/workspace-icon.component";
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { PencilIconComponent } from "../../icons/pencil-icon/pencil-icon.component";
+import { TrashIconComponent } from "../../icons/trash-icon/trash-icon.component";
 
 @Component({
     selector: 'app-workspace',
@@ -15,7 +17,9 @@ import { Router } from '@angular/router';
     imports: [
         BoardsCardsGridComponent,
         UserIconComponent,
-        WorkspaceIconComponent
+        WorkspaceIconComponent,
+        PencilIconComponent,
+        TrashIconComponent
     ]
 })
 export default class WorkspaceComponent {
@@ -37,6 +41,11 @@ export default class WorkspaceComponent {
         }
       }
     });
+  }
+
+  deleteWorkspace(id: number) {
+    this.appService.deleteWorkspace(id);
+    this.router.navigate(['/']);
   }
 
 }

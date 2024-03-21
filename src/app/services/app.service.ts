@@ -32,7 +32,7 @@ export class AppService {
     return this.selectedBoard.asObservable();
   }
 
-  getBoardById(workspaceId: string, boardId: string) {
+  getBoardById(workspaceId: number, boardId: number) {
     let boardSubject: BehaviorSubject<any> = new BehaviorSubject(undefined);
     const workspace = data.workspaces.find((workspace: any) => workspace.id == workspaceId);
     if (workspace) {
@@ -65,7 +65,7 @@ export class AppService {
     workspace?.boards.push(newBoard);
   }
 
-  createList(workspaceId: string, boardId: string, list: any) {
+  createList(workspaceId: number, boardId: number, list: any) {
     let workspace = data.workspaces.find((workspace: any) => workspace.id == workspaceId);
     if (workspace) {
       let board = workspace!.boards.find((board: any) => board.id == boardId);
@@ -75,7 +75,7 @@ export class AppService {
     }
   }
 
-  checkRecentBoards(workspaceId: any, boardId: any) {
+  checkRecentBoards(workspaceId: number, boardId: number) {
     let recentBoard: any = data.recent.find((board: any) => board.workspaceId == workspaceId && board.boardId == boardId);
     let index = data.recent.indexOf(recentBoard);
 
@@ -99,6 +99,16 @@ export class AppService {
         }
       }
     }
+  }
+
+  deleteWorkspace(workspaceId: number) {
+    const index = data.workspaces.findIndex((item: any) => item.id == workspaceId);
+    if (index !== -1) {
+      data.workspaces.splice(index, 1);
+    }
+
+    let filteredRecents = data.recent.filter((item: any) => item.workspaceId != workspaceId);
+    data.recent = filteredRecents;
   }
 
 }

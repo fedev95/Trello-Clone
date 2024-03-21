@@ -1,9 +1,17 @@
 @if (workspace) {
   <div class="px-4 gap-4 flex flex-col text-cc-text w-full">
     <div class="flex flex-col gap-4">
-      <div class="flex gap-3 items-center">
-        <app-workspace-icon [workspace]="workspace" sizeClasses="size-14 text-4xl rounded"></app-workspace-icon>
-        <h2 class="text-xl font-semibold">{{workspace.title}}</h2>
+      <div class="flex justify-between items-center">
+        <div class="flex gap-3 items-center">
+          <app-workspace-icon [workspace]="workspace" sizeClasses="size-14 text-4xl rounded"></app-workspace-icon>
+          <h2 class="text-xl font-semibold">{{workspace.title}}</h2>
+          <button aria-label="Edit workspace info." class="p-2 rounded hover:bg-cc-overlay">
+            <app-pencil-icon dimensions="size-3"></app-pencil-icon>
+          </button>
+        </div>
+        <button (click)="deleteWorkspace(workspace.id)" aria-label="Delete workspace." class="p-2 rounded hover:bg-cc-danger-red/20 text-cc-danger-red">
+          <app-trash-icon dimensions="size-3"></app-trash-icon>
+        </button>
       </div>
       <p class="text-xs text-cc-subtle leading-5">{{workspace.description}}</p>
     </div>
