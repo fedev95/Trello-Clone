@@ -4,6 +4,7 @@ import { AppService } from '../../../services/app.service';
 import { RouterModule } from '@angular/router';
 import { ChevronIconComponent } from "../../../icons/chevron-icon/chevron-icon.component";
 import { WorkspaceIconComponent } from "../../workspace-icon/workspace-icon.component";
+import { UsersIconComponent } from "../../../icons/users-icon/users-icon.component";
 
 @Component({
     selector: 'app-workspaces-dropdown',
@@ -16,7 +17,8 @@ import { WorkspaceIconComponent } from "../../workspace-icon/workspace-icon.comp
         CdkMenu,
         CdkMenuItem,
         ChevronIconComponent,
-        WorkspaceIconComponent
+        WorkspaceIconComponent,
+        UsersIconComponent
     ]
 })
 export class WorkspacesDropdownComponent implements OnInit {
@@ -31,6 +33,14 @@ export class WorkspacesDropdownComponent implements OnInit {
     this.appService.getData().subscribe({
       next: (res) => this.data = res
     });
+  }
+
+  showCreateWorkspaceModal() {
+    let modal = document.getElementById('create-workspace-modal');
+    if (modal) {
+      // @ts-ignore
+      modal.showModal();
+    }
   }
 
 }
