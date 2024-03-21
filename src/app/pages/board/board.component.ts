@@ -27,17 +27,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 })
 export default class BoardComponent implements OnInit {
 
-  // @Input()
-  // set 'workspace-id'(workspaceId: string) {
-  //   this.workspaceId = workspaceId;
-  //   this.getBoard();
-  // }
-  // @Input()
-  // set 'board-id'(boardId: string) {
-  //   this.boardId = boardId;
-  //   this.getBoard();
-  // }
-
   constructor(private titleService: Title) {}
 
   appService = inject(AppService);
@@ -75,7 +64,7 @@ export default class BoardComponent implements OnInit {
         }
       }
     });
-    this.appService.checkRecentBoards(this.workspaceId, this.boardId);
+    this.appService.checkRecentBoards(parseInt(this.workspaceId), parseInt(this.boardId));
   }
 
   pointerScroll() {
