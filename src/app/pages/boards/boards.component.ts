@@ -31,4 +31,12 @@ export default class BoardsComponent implements OnInit {
     });
   }
 
+  showCreateWorkspaceModal() {
+    let modal = document.getElementById('create-workspace-modal');
+    if (modal) {
+      // @ts-ignore
+      modal.showModal();
+    }
+  }
+
 }

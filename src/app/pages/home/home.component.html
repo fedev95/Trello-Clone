@@ -9,11 +9,18 @@
       </a>
       <div class="mt-1 flex flex-col gap-1 border-t border-cc-border/15 pt-5">
         <p class="text-xs text-cc-subtle font-semibold pb-2">Workspaces</p>
-        @for (workspace of data.workspaces; track $index) {
-          <a [routerLink]="'/workspace/' + workspace.id" class="flex hover:bg-cc-overlay rounded-md gap-2 items-center p-2 font-semibold duration-200" routerLinkActive="bg-cc-accent-muted text-cc-accent-muted hover:bg-current">
-            <app-workspace-icon [workspace]="workspace" sizeClasses="size-6 text-sm rounded"></app-workspace-icon>
-            <span routerLinkActive="text-cc-accent">{{workspace.title}}</span>
-          </a>
+        @if (data.workspaces.length > 0) {
+          @for (workspace of data.workspaces; track $index) {
+            <a [routerLink]="'/workspace/' + workspace.id" class="flex hover:bg-cc-overlay rounded-md gap-2 items-center p-2 font-semibold duration-200" routerLinkActive="bg-cc-accent-muted text-cc-accent-muted hover:bg-current">
+              <app-workspace-icon [workspace]="workspace" sizeClasses="size-6 text-sm rounded"></app-workspace-icon>
+              <span routerLinkActive="text-cc-accent">{{workspace.title}}</span>
+            </a>
+          }
+        } @else {
+          <button (click)="showCreateWorkspaceModal()" class="flex items-center duration-200 rounded-md gap-2 py-2 px-3 hover:bg-cc-overlay">
+              <app-plus-icon dimensions="size-3"></app-plus-icon>
+              Create a Workspace
+          </button>
         }
       </div>
     </div>

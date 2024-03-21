@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { AppService } from '../../services/app.service';
 import { TrelloIconComponent } from "../../icons/trello-icon/trello-icon.component";
 import { WorkspaceIconComponent } from "../../components/workspace-icon/workspace-icon.component";
+import { PlusIconComponent } from "../../icons/plus-icon/plus-icon.component";
 
 @Component({
     selector: 'app-home',
@@ -13,7 +14,8 @@ import { WorkspaceIconComponent } from "../../components/workspace-icon/workspac
     imports: [
         RouterModule,
         TrelloIconComponent,
-        WorkspaceIconComponent
+        WorkspaceIconComponent,
+        PlusIconComponent
     ]
 })
 export default class HomeComponent implements OnInit {
@@ -25,6 +27,14 @@ export default class HomeComponent implements OnInit {
     this.appService.getData().subscribe({
       next: (res) =>  this.data = res
     });
+  }
+
+  showCreateWorkspaceModal() {
+    let modal = document.getElementById('create-workspace-modal');
+    if (modal) {
+      // @ts-ignore
+      modal.showModal();
+    }
   }
   
 }

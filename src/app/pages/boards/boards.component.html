@@ -1,6 +1,6 @@
 <div class="px-4 flex flex-col gap-20 text-cc-text w-full">
 
-  @if (data.recent) {
+  @if (data.recent.length > 0) {
     <div class="flex flex-col gap-3">
       <div class="flex gap-3 items-center">
         <app-clock-icon dimensions="size-6"></app-clock-icon>
@@ -17,16 +17,22 @@
   <div class="flex flex-col gap-5">
     <h1 class="font-bold text-cc-subtle">YOUR WORKSPACES</h1>
     <div class="flex flex-col gap-14">
-      @for (workspace of data.workspaces; track $index) {
-        <div class="flex flex-col gap-4">
-          <div class="flex justify-between">
-            <div class="flex gap-2 items-center">
-              <app-workspace-icon [workspace]="workspace" sizeClasses="size-8 text-xl rounded-[3px]"></app-workspace-icon>
-              <h3 class="font-bold">{{workspace.title}}</h3>
+      @if (data.workspaces.length > 0) {
+        @for (workspace of data.workspaces; track $index) {
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-between">
+              <div class="flex gap-2 items-center">
+                <app-workspace-icon [workspace]="workspace" sizeClasses="size-8 text-xl rounded-[3px]"></app-workspace-icon>
+                <h3 class="font-bold">{{workspace.title}}</h3>
+              </div>
             </div>
+            <app-boards-cards-grid [workspace]="workspace"></app-boards-cards-grid>          
           </div>
-          <app-boards-cards-grid [workspace]="workspace"></app-boards-cards-grid>          
-        </div>
+        }
+      } @else {
+        <button (click)="showCreateWorkspaceModal()" class="text-cc-accent hover:underline me-auto text-sm font-medium">
+          Create a workspace
+        </button>
       }
     </div>
   </div>
