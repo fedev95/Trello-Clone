@@ -111,4 +111,12 @@ export class AppService {
     data.recent = filteredRecents;
   }
 
+  editWorkspaceInfo(title: string, description: string, workspaceId: number) {
+    let workspace = data.workspaces.find((workspace: any) => workspace.id == workspaceId);
+    if (workspace) {
+      workspace.title = title;
+      workspace.description = description
+    }
+  }
+
 }

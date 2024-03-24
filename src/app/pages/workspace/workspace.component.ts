@@ -7,6 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { PencilIconComponent } from "../../icons/pencil-icon/pencil-icon.component";
 import { TrashIconComponent } from "../../icons/trash-icon/trash-icon.component";
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-workspace',
@@ -19,7 +20,9 @@ import { TrashIconComponent } from "../../icons/trash-icon/trash-icon.component"
         UserIconComponent,
         WorkspaceIconComponent,
         PencilIconComponent,
-        TrashIconComponent
+        TrashIconComponent,
+        ReactiveFormsModule,
+        FormsModule
     ]
 })
 export default class WorkspaceComponent {
@@ -28,13 +31,19 @@ export default class WorkspaceComponent {
   titleService = inject(Title);
   router = inject(Router);
   workspace: any;
+  editMode: boolean = false;
   
   @Input()
   set id(heroId: string) {
     this.appService.getWorkspace(heroId).subscribe({
       next: (res) => {
         if (res) {
+          this.editMode = false;
           this.workspace = res;
+          this.editWorkspaceForm.patchValue({
+            title: res.title,
+            description: res.description
+          })
           this.titleService.setTitle(`${this.workspace.title} | Trello`);
         } else {
           this.router.navigate(['']);
@@ -42,6 +51,11 @@ export default class WorkspaceComponent {
       }
     });
   }
+
+  editWorkspaceForm = new FormGroup({
+    title: new FormControl('', Validators.required),
+    description: new FormControl(''),
+  });
 
   deleteWorkspace(id: number) {
     this.appService.deleteWorkspace(id);
@@ -55,6 +69,17 @@ export default class WorkspaceComponent {
       // @ts-ignore
       modal.showModal();
     }
+  }
+
+  editWorkspaceInfo() {
+    this.cancelEdit();
+    const newTitle = this.editWorkspaceForm.getRawValue().title;
+    const newDescription = this.editWorkspaceForm.getRawValue().description;
+    this.appService.editWorkspaceInfo(newTitle!, newDescription!, this.workspace.id);
+  }
+
+  cancelEdit() {
+    this.editMode = false;
   }
 
 }

@@ -1,17 +1,34 @@
 @if (workspace) {
   <div class="px-4 gap-4 flex flex-col text-cc-text w-full">
-    <div class="flex flex-col gap-4">
-      <div class="flex justify-between items-center">
-        <div class="flex gap-3 items-center">
-          <app-workspace-icon [workspace]="workspace" sizeClasses="size-14 text-4xl rounded"></app-workspace-icon>
-          <h2 class="text-xl font-semibold">{{workspace.title}}</h2>
-          <button aria-label="Edit workspace info." class="p-2 rounded hover:bg-cc-overlay">
-            <app-pencil-icon dimensions="size-3"></app-pencil-icon>
-          </button>
+    @if (editMode) {
+      <form [formGroup]="editWorkspaceForm" (ngSubmit)="editWorkspaceInfo()" class="flex flex-col max-w-64 w-full gap-3 text-cc-subtle">
+        <label for="name" class="flex flex-col gap-1">
+          <span class="font-bold text-xs">Name <span class="text-cc-danger-red">*</span></span>
+          <input formControlName="title" id="name" type="text" class="{{editWorkspaceForm.get('title')?.errors? 'border-cc-danger-red': ''}} py-[6px] hover:bg-cc-surface rounded bg-cc-surface/60 outline-none px-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm">
+        </label>
+        <label for="description" class="flex flex-col gap-1">
+          <span class="font-bold text-xs">Description (optional)</span>
+          <textarea class="hover:bg-cc-surface rounded bg-cc-surface/60 outline-none p-2 border-2 border-cc-border/40 focus:border-cc-accent text-sm resize-none" formControlName="description" id="description" rows="5"></textarea>
+        </label>
+        <div class="flex gap-1">
+          <button type="submit" [disabled]="editWorkspaceForm.invalid" class="{{editWorkspaceForm.invalid? 'bg-cc-surface cursor-not-allowed text-cc-overlay' : 'bg-cc-accent hover:bg-cc-accent-highlight text-cc-base'}} rounded py-[6px] px-3  text-sm font-semibold">Save</button>
+          <button (click)="cancelEdit()" type="button" class="bg-cc-surface hover:bg-cc-overlay rounded py-[6px] px-3 text-sm font-semibold">Cancel</button>
         </div>
+      </form>
+    } @else {
+      <div class="flex flex-col gap-4">
+        <div class="flex justify-between items-center">
+          <div class="flex gap-3 items-center">
+            <app-workspace-icon [workspace]="workspace" sizeClasses="size-14 text-4xl rounded"></app-workspace-icon>
+            <h2 class="text-xl font-semibold">{{workspace.title}}</h2>
+            <button (click)="editMode = true" aria-label="Edit workspace info." class="p-2 rounded hover:bg-cc-overlay">
+              <app-pencil-icon dimensions="size-3"></app-pencil-icon>
+            </button>
+          </div>
+        </div>
+        <p class="text-xs text-cc-subtle leading-5">{{workspace.description}}</p>
       </div>
-      <p class="text-xs text-cc-subtle leading-5">{{workspace.description}}</p>
-    </div>
+    }
     <hr class="border-t border-cc-border/15">
     @if (workspace.boards.length > 0) {
       <div class="flex flex-col gap-4">
