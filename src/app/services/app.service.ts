@@ -119,4 +119,14 @@ export class AppService {
     }
   }
 
+  editBoardTitle(workspaceId: number, boardId: number, boardTitle: string) {
+    const workspace = data.workspaces.find((workspace: any) => workspace.id == workspaceId);
+    if (workspace) {
+      let board = workspace.boards.find((board: any) => board.id == boardId);
+      if (board) {
+        board.title = boardTitle;
+      }
+    }
+  }
+
 }

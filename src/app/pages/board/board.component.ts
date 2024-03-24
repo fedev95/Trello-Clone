@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { TaskCardListComponent } from "../../components/task-card-list/task-card-list.component";
 import { MenuDotsIconComponent } from "../../icons/menu-dots/menu-dots-icon.component";
@@ -9,6 +9,7 @@ import { BoardService } from '../../services/board.service';
 import { NewListFormComponent } from "../../components/new-list-form/new-list-form.component";
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-board',
@@ -22,7 +23,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
         MenuDotsIconComponent,
         BoardSidebarComponent,
         BoardSettingsComponent,
-        NewListFormComponent
+        NewListFormComponent,
+        ReactiveFormsModule,
+        FormsModule
     ]
 })
 export default class BoardComponent implements OnInit {
@@ -37,6 +40,11 @@ export default class BoardComponent implements OnInit {
   workspace: any;
   board: any;
   settings: any;
+  editTitle: boolean = false;
+
+  boardTitleForm = new FormGroup({
+    title: new FormControl('', Validators.required)
+  });
 
   ngOnInit(): void {
     this.settings = this.boardService.getSettingsSidebar();
@@ -45,6 +53,18 @@ export default class BoardComponent implements OnInit {
       this.boardId = params.get('board-id');
       this.getBoard();
     });
+  }
+
+  submitTitle() {
+    this.editTitle = false;
+    let newTitle = this.boardTitleForm.getRawValue().title;
+    if (newTitle) {
+      this.appService.editBoardTitle(this.workspaceId, this.board.id, newTitle);
+    } else {
+      this.boardTitleForm.patchValue({
+        title: this.board.title
+      });
+    }
   }
 
   setSettingsSidebar(value: boolean) {
@@ -61,6 +81,9 @@ export default class BoardComponent implements OnInit {
         if (res) {
           this.board = res
           this.titleService.setTitle(`${this.board.title} | Trello`);
+          this.boardTitleForm.patchValue({
+            title: this.board.title
+          })
         }
       }
     });
