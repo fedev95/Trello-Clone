@@ -7,7 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FirstLetterPipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
-    return value.charAt(0);
+    let cleanString: string = value.replace(/^\s+/, '');
+    return cleanString.charAt(0);
   }
 
 }
