@@ -115,7 +115,7 @@ export class AppService {
     let workspace = data.workspaces.find((workspace: any) => workspace.id == workspaceId);
     if (workspace) {
       workspace.title = title;
-      workspace.description = description
+      workspace.description = description;
     }
   }
 
@@ -126,6 +126,22 @@ export class AppService {
       if (board) {
         board.title = boardTitle;
       }
+    }
+  }
+
+  closeBoard(workspaceId: number, boardId: number,) {
+    const workspace = data.workspaces.find((workspace: any) => workspace.id == workspaceId);
+    if (workspace) {
+      let index = workspace.boards.findIndex((board: any) => board.id == boardId);
+      if (index !== -1) {
+        workspace.boards.splice(index, 1);
+      }
+    }
+
+    let recentBoard: any = data.recent.find((board: any) => board.workspaceId == workspaceId && board.boardId == boardId);
+    if (recentBoard) {
+      let index = data.recent.indexOf(recentBoard);
+      data.recent.splice(index, 1);
     }
   }
 

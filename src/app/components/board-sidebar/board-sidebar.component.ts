@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FirstLetterPipe } from "../../pipes/first-letter.pipe";
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ChevronIconComponent } from "../../icons/chevron-icon/chevron-icon.component";
 import { WorkspaceIconComponent } from "../workspace-icon/workspace-icon.component";
 import { MinusIconComponent } from "../../icons/minus-icon/minus-icon.component";
+import { AppService } from '../../services/app.service';
 
 @Component({
     selector: 'app-board-sidebar',
@@ -22,9 +23,16 @@ import { MinusIconComponent } from "../../icons/minus-icon/minus-icon.component"
 })
 export class BoardSidebarComponent {
 
+  appService = inject(AppService);
+  router = inject(Router);
   sidebar: boolean = true;
 
   @Input({required: true}) workspace: any;
-  @Input({ required: true }) bgBase: any;
+  @Input({ required: true }) board: any;
+
+  closeBoard() {
+    this.appService.closeBoard(this.workspace.id, this.board.id);
+    this.router.navigate(['/']);
+  }
 
 }

@@ -1,6 +1,6 @@
 @if (board) {
   <div class="flex h-full overflow-hidden {{board.background}}" style="view-transition-name: board-transition">
-    <app-board-sidebar [workspace]="workspace" [bgBase]="board.base"></app-board-sidebar>
+    <app-board-sidebar [workspace]="workspace" [board]="board"></app-board-sidebar>
   
     <div class="bg-cc-board-filter duration-200 h-full w-full flex flex-col overflow-hidden pb-2">
   

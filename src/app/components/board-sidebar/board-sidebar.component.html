@@ -1,4 +1,4 @@
-<div class="{{bgBase}} h-full">
+<div class="{{board.bgBase}} h-full">
   <div
     class="{{sidebar? 'min-w-[260px]' : 'min-w-[16px]'}} h-full relative duration-200 bg-cc-board-sidebar text-cc-board-sidebar-text border-r border-[hsla(211,18%,68%,0.16)]">
     <div class="h-full w-full {{sidebar? 'block' : 'invisible delay-200'}}">
@@ -21,15 +21,15 @@
           </div>
           <div class="flex flex-col">
             @for (board of workspace.boards; track $index) {
-            <div class="flex items-center py-1 px-3 gap-2 text-sm hover:bg-white/10 [&>button]:hover:min-w-7 relative"
-              routerLinkActive="bg-white/20">
-              <div class="min-w-6 min-h-5 rounded-sm {{board.background}}"></div>
-              <a routerLink="/board/{{workspace.id}}/{{board.id}}" class="truncate expanded-link">{{board.title}}</a>
-              <button title="Close workspace"
-                class="flex ms-auto w-0 h-7 overflow-hidden focus:min-w-7 justify-center items-center aspect-square rounded-sm hover:bg-white/15 relative">
-                <app-minus-icon dimensions="size-3"></app-minus-icon>
-              </button>
-            </div>
+              <div class="flex items-center py-1 px-3 gap-2 text-sm hover:bg-white/10 [&>button]:hover:min-w-7 relative"
+                routerLinkActive="bg-white/20">
+                <div class="min-w-6 min-h-5 rounded-sm {{board.background}}"></div>
+                <a routerLink="/board/{{workspace.id}}/{{board.id}}" class="truncate expanded-link">{{board.title}}</a>
+                <button (click)="closeBoard()" title="Close board"
+                  class="flex ms-auto w-0 h-7 overflow-hidden focus:min-w-7 justify-center items-center aspect-square rounded-sm hover:bg-white/15 relative">
+                  <app-minus-icon dimensions="size-3"></app-minus-icon>
+                </button>
+              </div>
             }
           </div>
         </div>
