@@ -43,7 +43,7 @@ export default class WorkspaceComponent {
           this.editWorkspaceForm.patchValue({
             title: res.title,
             description: res.description
-          })
+          });
           this.titleService.setTitle(`${this.workspace.title} | Trello`);
         } else {
           this.router.navigate(['']);
@@ -72,14 +72,18 @@ export default class WorkspaceComponent {
   }
 
   editWorkspaceInfo() {
-    this.cancelEdit();
     const newTitle = this.editWorkspaceForm.getRawValue().title;
     const newDescription = this.editWorkspaceForm.getRawValue().description;
     this.appService.editWorkspaceInfo(newTitle!, newDescription!, this.workspace.id);
+    this.cancelEdit();
   }
 
   cancelEdit() {
     this.editMode = false;
+    this.editWorkspaceForm.patchValue({
+      title: this.workspace.title,
+      description: this.workspace.description
+    });
   }
 
 }
