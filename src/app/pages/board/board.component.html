@@ -7,15 +7,15 @@
       <!-- toolbar -->
       <div class="py-3 px-4 gap-4 min-h-[56px] bg-black/25 flex justify-between text-white">
         <div class="w-fit relative flex flex-col overflow-hidden">
-          <button (click)="editTitle = true; titleInput.focus(); titleInput.select()"
-            class="{{editTitle? 'whitespace-pre -z-10' : 'z-0'}} w-fit h-full px-2 text-white text-lg font-bold hover:bg-white/15 overflow-hidden truncate border-2 border-transparent rounded">{{boardTitleForm.getRawValue().title}}</button>
+          <button [attr.aria-hidden]="editTitle" (click)="editTitle = true; titleInput.focus(); titleInput.select()"
+            class="{{editTitle? 'whitespace-pre -z-10' : 'z-0'}} focus:bg-white/15 w-fit h-full px-2 text-white text-lg font-bold hover:bg-white/15 overflow-hidden truncate border-2 border-transparent rounded">{{boardTitleForm.getRawValue().title}}</button>
           <form [formGroup]="boardTitleForm" (ngSubmit)="titleInput.blur()" class="{{editTitle? 'z-0' : '-z-10 opacity-0'}} absolute w-full">
-            <input (blur)="submitTitle()" #titleInput formControlName="title" type="text" id="board-title"
+            <input [attr.aria-hidden]="!editTitle" [tabIndex]="editTitle? 1 : -1" (blur)="submitTitle()" #titleInput formControlName="title" type="text" id="board-title"
               class="w-full bg-cc-base border-2 border-cc-accent-highlight px-2 text-lg font-bold rounded outline-none text-cc-subtle">
           </form>
         </div>
         <button aria-label="Show menu"
-          class="p-2 hover:bg-white/10 rounded-sm {{(settings | async)? 'invisible' : 'visible'}}"
+          class="p-2 hover:bg-white/15 focus:bg-white/15 rounded-sm {{(settings | async)? 'invisible' : 'visible'}}"
           (click)="setSettingsSidebar(true)">
           <app-menu-dots-icon dimensions="size-4"></app-menu-dots-icon>
         </button>
