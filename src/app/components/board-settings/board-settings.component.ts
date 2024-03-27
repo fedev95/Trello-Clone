@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ChevronIconComponent } from "../../icons/chevron-icon/chevron-icon.component";
 import { SettingsMenu } from '../../enums/BoardSettingsMenu';
 import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component";
-import { CheckIconComponent } from "../../icons/check-icon/check-icon.component";
 import { ArchiveIconComponent } from "../../icons/archive-icon/archive-icon.component";
 import { LabelIconComponent } from "../../icons/label-icon/label-icon.component";
 import { MinusIconComponent } from "../../icons/minus-icon/minus-icon.component";
 import { ChangeBackgroundComponent } from "./change-background/change-background.component";
 import { LabelsComponent } from "./labels/labels.component";
+import { AppService } from '../../services/app.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-board-settings',
@@ -20,7 +21,6 @@ import { LabelsComponent } from "./labels/labels.component";
         CommonModule,
         ChevronIconComponent,
         XmarkIconComponent,
-        CheckIconComponent,
         ArchiveIconComponent,
         LabelIconComponent,
         MinusIconComponent,
@@ -31,8 +31,11 @@ import { LabelsComponent } from "./labels/labels.component";
 export class BoardSettingsComponent implements OnInit {
 
   @Input({required: true}) board: any;
+  @Input({ required: true }) workspace: any;
 
   boardService = inject(BoardService);
+  appService = inject(AppService);
+  router = inject(Router);
   settings: any;
 
   settingsMenu = SettingsMenu;
@@ -48,6 +51,11 @@ export class BoardSettingsComponent implements OnInit {
 
   setActiveMenu(value: SettingsMenu) {
     this.activeMenu = value;
+  }
+
+  closeBoard() {
+    this.appService.closeBoard(this.workspace.id, this.board.id);
+    this.router.navigate(['/']);
   }
 
 }
