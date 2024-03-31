@@ -9,10 +9,24 @@
       }
     </div>
     <div class="flex p-2 text-sm font-medium">
-      <button class="w-full py-2 px-3 text-start text-cc-subtle hover:bg-cc-task-list-btn rounded-lg flex gap-2 items-center">
-        <app-plus-icon dimensions="size-3"></app-plus-icon>
-        Add a card
-      </button>
+      @if (buildTask) {
+        <form #taskForm [formGroup]="newTaskForm" (ngSubmit)="createTask(list)" class="w-full flex flex-col gap-2">
+          <input #asd id="task-title-input" autofocus type="text" formControlName="title" placeholder="Enter a title for this card…" class="bg-cc-task-card outline-none py-2 px-3 rounded-lg w-full">
+          <div class="flex gap-1">
+            <button type="submit" [disabled]="!newTaskForm.valid"
+              class="py-[6px] px-3 font-semibold bg-cc-accent hover:bg-cc-accent-highlight text-cc-base rounded">Add card</button>
+            <button type="button" aria-label="Cancel" (click)="createCancel()"
+              class=" hover:bg-cc-task-list-btn w-8 flex justify-center items-center rounded">
+              <app-xmark-icon dimensions="size-3"></app-xmark-icon>
+            </button>
+          </div>
+        </form>
+      } @else {
+        <button (click)="showCreateTaskForm(); $event.stopPropagation()" class="w-full py-2 px-3 text-start text-cc-subtle hover:bg-cc-task-list-btn rounded-lg flex gap-2 items-center">
+          <app-plus-icon dimensions="size-3"></app-plus-icon>
+          Add a card
+        </button>
+      }
     </div>
   </div>
 </div>
