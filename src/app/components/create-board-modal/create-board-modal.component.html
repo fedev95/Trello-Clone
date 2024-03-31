@@ -15,9 +15,9 @@
       <form [formGroup]="newBoardForm" (ngSubmit)="createBoard()" class="mt-5 flex flex-col gap-4">  
         <div class="flex flex-col gap-2">
           <p class="font-bold">Background</p>
-          <div class="grid grid-cols-6 gap-2">
+          <div class="grid grid-cols-6 gap-2" cdkMenu>
             @for (background of boardBackgrounds.gradients; track $index) {
-            <button type="button" (click)="setBackgrounds(background)" class="rounded h-8 relative {{background.class}}">
+            <button cdkMenuItem type="button" (click)="setBackgrounds(background)" class="rounded h-8 relative {{background.class}}">
               <span
                 class="absolute h-full w-full flex items-center justify-center top-0 left-0 hover:bg-cc-base/20 text-white">
                 @if (newBoardForm.getRawValue().background === background.class) {
@@ -27,7 +27,7 @@
             </button>
             }
             @for (background of boardBackgrounds.solids; track $index) {
-            <button type="button" (click)="setBackgrounds(background)" class="rounded h-8 relative {{background.class}}">
+            <button cdkMenuItem type="button" (click)="setBackgrounds(background)" class="rounded h-8 relative {{background.class}}">
               <span
                 class="absolute h-full w-full flex items-center justify-center top-0 left-0 hover:bg-cc-base/20 text-white">
                 @if (newBoardForm.getRawValue().background === background.class) {
@@ -56,9 +56,9 @@
               <app-chevron-icon dimensions="size-3"></app-chevron-icon>
             </button>
             @if (workspacesList) {
-            <div class="rounded-lg border border-cc-border/15 py-2">
+            <div cdkMenu class="rounded-lg border border-cc-border/15 py-2">
               @for (workspace of data.workspaces; track $index) {
-              <button type="button" (click)="createBoardWorkspace = workspace.id; workspacesList = false"
+              <button cdkMenuItem type="button" (click)="createBoardWorkspace = workspace.id; workspacesList = false"
                 class="{{createBoardWorkspace == workspace.id? 'bg-cc-accent-muted text-cc-accent' : ''}} w-full p-2 text-start hover:bg-cc-overlay text-sm">{{workspace.title}}</button>
               }
             </div>

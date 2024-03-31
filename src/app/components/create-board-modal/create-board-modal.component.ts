@@ -7,6 +7,7 @@ import { AppService } from '../../services/app.service';
 import { WorkspaceDataPipe } from "../../pipes/workspace-data.pipe";
 import { ChevronIconComponent } from "../../icons/chevron-icon/chevron-icon.component";
 import { Router } from '@angular/router';
+import { CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
 
 @Component({
     selector: 'app-create-board-modal',
@@ -19,7 +20,9 @@ import { Router } from '@angular/router';
         FormsModule,
         CheckIconComponent,
         ChevronIconComponent,
-        WorkspaceDataPipe
+        WorkspaceDataPipe,
+        CdkMenu,
+        CdkMenuItem
     ]
 })
 export class CreateBoardModalComponent implements OnInit {
