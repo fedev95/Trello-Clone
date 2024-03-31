@@ -35,7 +35,9 @@
   --boardpage-menu-text-active: 255, 255, 255;
   
   --boardpage-accent-menu: 255, 255, 255, 0.2;
+  --boardpage-accent-menu-text: 255, 255, 255;
   --boardpage-accent-menu-hover: 255, 255, 255, 0.3;
+  --boardpage-accent-menu-expanded: 255, 255, 255, 0.3;
 
   --board-filter: 0, 0, 0, 0;
   --board-sidebar: 255, 255, 255, 0;
@@ -79,7 +81,9 @@
     --boardpage-menu-text-active: 87, 157, 255;
     
     --boardpage-accent-menu: 87, 157, 255;
+    --boardpage-accent-menu-text: 87, 157, 255;
     --boardpage-accent-menu-hover: 133, 184, 255;
+    --boardpage-accent-menu-expanded: 28, 43, 65;
 
     --board-filter: 0, 0, 0, 0.2;
     --board-sidebar: 28, 32, 36, 0.9;
@@ -124,7 +128,9 @@
   --boardpage-menu-text-active: 255, 255, 255;
 
   --boardpage-accent-menu: 255, 255, 255, 0.2;
+  --boardpage-accent-menu-text: 255, 255, 255;
   --boardpage-accent-menu-hover: 255, 255, 255, 0.3;
+  --boardpage-accent-menu-expanded: 255, 255, 255, 0.3;
 
   --board-filter: 0, 0, 0, 0;
   --board-sidebar: 255, 255, 255, 0;
@@ -169,7 +175,9 @@
   --boardpage-menu-text-active: 87, 157, 255;
 
   --boardpage-accent-menu: 87, 157, 255;
+  --boardpage-accent-menu-text: 87, 157, 255;
   --boardpage-accent-menu-hover: 133, 184, 255;
+  --boardpage-accent-menu-expanded: 28, 43, 65;
 
   --board-filter: 0, 0, 0, 0.2;  
   --board-sidebar: 28, 32, 36, 0.9;
