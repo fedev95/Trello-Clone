@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild, inject } from '@angular/core';
 import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { backgrounds } from './../board-settings/boardBackgrounds';
 import { CheckIconComponent } from "../../icons/check-icon/check-icon.component";
 import { AppService } from '../../services/app.service';
@@ -47,7 +47,7 @@ export class CreateBoardModalComponent implements OnInit {
     id: new FormControl(0, Validators.required),
     base: new FormControl('board-bg-base-1', Validators.required),
     background: new FormControl('board-bg-1', Validators.required),
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
     labels: new FormControl([]),
     archived: new FormControl({lists: [], cards: []}),
     lists: new FormControl([])

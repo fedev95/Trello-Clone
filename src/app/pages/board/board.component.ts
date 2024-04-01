@@ -43,7 +43,7 @@ export default class BoardComponent implements OnInit {
   editTitle: boolean = false;
 
   boardTitleForm = new FormGroup({
-    title: new FormControl('', Validators.required)
+    title: new FormControl('', [Validators.required])
   });
 
   ngOnInit(): void {
@@ -59,7 +59,14 @@ export default class BoardComponent implements OnInit {
     this.editTitle = false;
     let newTitle = this.boardTitleForm.getRawValue().title;
     if (newTitle) {
-      this.appService.editBoardTitle(this.workspaceId, this.board.id, newTitle);
+      let isValid = newTitle.trim().length > 0;
+      if (isValid) {
+        this.appService.editBoardTitle(this.workspaceId, this.board.id, newTitle);
+      } else {
+        this.boardTitleForm.patchValue({
+          title: this.board.title
+        });
+      }
     } else {
       this.boardTitleForm.patchValue({
         title: this.board.title

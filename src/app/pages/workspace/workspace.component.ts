@@ -53,7 +53,7 @@ export default class WorkspaceComponent {
   }
 
   editWorkspaceForm = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
     description: new FormControl(''),
   });
 

@@ -32,15 +32,16 @@ export class TaskCardListComponent {
   }
 
   newTaskForm = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
     description: new FormControl(''),
     labels: new FormControl([])
   });
 
   createTask(taskList: any) {
-    console.log(taskList);
     taskList.cards.push(this.newTaskForm.getRawValue());
-    this.createCancel();
+    this.newTaskForm.patchValue({
+      title: '',
+    });
   }
 
   createCancel() {

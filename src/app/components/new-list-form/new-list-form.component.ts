@@ -33,7 +33,7 @@ export class NewListFormComponent {
   }
 
   newListForm = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
     cards: new FormControl([])
   });
 

@@ -24,7 +24,7 @@ export class CreateWorkspaceModalComponent implements OnInit {
 
   newWorkspaceForm = new FormGroup({
     id: new FormControl(0, Validators.required),
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
     iconBg: new FormControl(''),
     description: new FormControl(''),
     boards: new FormControl([])
