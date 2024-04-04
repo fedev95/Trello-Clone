@@ -1,8 +1,9 @@
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, ViewChild, inject } from '@angular/core';
 import { TaskCardComponent } from "../task-card/task-card.component";
 import { PlusIconComponent } from "../../icons/plus-icon/plus-icon.component";
 import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component";
+import { BoardService } from '../../services/board.service';
 
 @Component({
     selector: 'app-task-card-list',
@@ -21,6 +22,7 @@ import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component"
 export class TaskCardListComponent {
 
   @Input({ required: true }) list: any;
+  boardService = inject(BoardService);
   buildTask: boolean = false;
 
   @ViewChild('taskForm') menux!: ElementRef;
@@ -36,6 +38,10 @@ export class TaskCardListComponent {
     description: new FormControl(''),
     labels: new FormControl([])
   });
+
+  setBoardScroll(value: boolean) {
+    this.boardService.setScroll(value);
+  }
 
   createTask(taskList: any) {
     taskList.cards.push(this.newTaskForm.getRawValue());

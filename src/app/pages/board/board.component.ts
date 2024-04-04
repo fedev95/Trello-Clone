@@ -10,6 +10,7 @@ import { NewListFormComponent } from "../../components/new-list-form/new-list-fo
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BoardDragdropComponent } from "../../components/board-dragdrop/board-dragdrop.component";
 
 @Component({
     selector: 'app-board',
@@ -25,7 +26,8 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } 
         BoardSettingsComponent,
         NewListFormComponent,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        BoardDragdropComponent
     ]
 })
 export default class BoardComponent implements OnInit {
@@ -41,6 +43,7 @@ export default class BoardComponent implements OnInit {
   board: any;
   settings: any;
   editTitle: boolean = false;
+  ableToScroll: boolean = false;
 
   boardTitleForm = new FormGroup({
     title: new FormControl('', [Validators.required])
@@ -48,11 +51,18 @@ export default class BoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.settings = this.boardService.getSettingsSidebar();
+    this.boardService.getScroll().subscribe({
+      next: (res) => this.ableToScroll = res
+    })
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.workspaceId = params.get('workspace-id');
       this.boardId = params.get('board-id');
       this.getBoard();
     });
+  }
+
+  setBoardScroll(value: boolean) {
+    this.boardService.setScroll(value);
   }
 
   submitTitle() {

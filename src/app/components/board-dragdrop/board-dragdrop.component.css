@@ -1,0 +1,18 @@
+.cdk-drag-preview {
+  opacity: 0.8;
+  rotate: 2deg;
+}
+
+.card-list::-webkit-scrollbar, .cdk-drag-preview *::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-list::-webkit-scrollbar-track, .cdk-drag-preview *::-webkit-scrollbar-track {
+  background: rgba(var(--task-list-scrollbar-track));
+  border-radius: 9999px;
+}
+
+.card-list::-webkit-scrollbar-thumb, .cdk-drag-preview *::-webkit-scrollbar-thumb {
+  background: rgba(var(--task-list-scrollbar-thumb));
+  border-radius: 9999px;
+}

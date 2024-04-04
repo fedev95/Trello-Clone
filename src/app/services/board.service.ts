@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class BoardService {
 
   settingsSidebar: BehaviorSubject<any> = new BehaviorSubject(false);
+  ableToScroll: BehaviorSubject<any> = new BehaviorSubject(true);
 
   getSettingsSidebar() {
     return this.settingsSidebar.asObservable();
@@ -14,6 +15,14 @@ export class BoardService {
 
   setSettingsSidebar(value: boolean) {
     this.settingsSidebar.next(value);
+  }
+
+  getScroll() {
+    return this.ableToScroll.asObservable();
+  }
+
+  setScroll(value: boolean) {
+    this.ableToScroll.next(value);
   }
 
 }

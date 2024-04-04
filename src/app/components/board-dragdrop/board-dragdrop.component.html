@@ -1,0 +1,37 @@
+<div class="h-full flex gap-3" cdkDropListGroup cdkDropList cdkDropListOrientation="horizontal">
+  @for (list of board.lists; track $index) {
+    <app-task-card-list [list]="list" cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isList = true" (mouseleave)="isList = false">
+      <div class="flex p-2 text-sm font-medium" cdkDragHandle>
+        <p (click)="falopa()" class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
+      </div>
+      <div class="flex flex-col mx-1 px-1 gap-2 overflow-auto card-list min-h-2" cdkDropList [cdkDropListData]="list">
+        @for (card of list.cards; track $index) {
+          <div cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isTask = true" (mouseleave)="isTask = false">
+            <app-task-card [card]="card"></app-task-card>
+            @if (isTask) {
+              <div *cdkDragPlaceholder class="relative">
+                <app-task-card [card]="card"></app-task-card>
+                <div class="absolute top-0 left-0 rounded-lg bg-cc-task-drop w-full h-full"></div>
+              </div>
+            }
+          </div>
+        }
+      </div>
+      @if (isList) {
+        <div *cdkDragPlaceholder class="opacity-30 overflow-hidden max-h-full flex flex-col rounded-xl">
+          <app-task-card-list [list]="list">
+            <div class="h-full w-full absolute bg-black top-0 left-0"></div>
+            <div class="flex p-2 text-sm font-medium">
+              <p class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
+            </div>
+            <div class="flex flex-col mx-1 px-1 gap-2 overflow-auto">
+              @for (card of list.cards; track $index) {
+                <app-task-card [card]="card"></app-task-card>
+              }
+            </div>
+          </app-task-card-list>
+        </div>
+      }
+    </app-task-card-list>
+  }
+</div>

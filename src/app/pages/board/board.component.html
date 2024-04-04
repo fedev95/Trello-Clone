@@ -24,13 +24,9 @@
       <!-- board -->
       <div id="board-content"
         class="flex gap-3 p-3 pb-2 flex-grow items-start overflow-x-auto min-w-full overflow-y-hidden"
-        (mousedown)="pointerScroll()">
+        (mousedown)="ableToScroll? pointerScroll() : ''" (mouseenter)="setBoardScroll(true)">
         @if (board.lists.length > 0) {
-          <div class="flex gap-3 h-full">
-            @for (list of board.lists; track $index) {
-              <app-task-card-list [list]="list"></app-task-card-list>
-            }
-          </div>
+          <app-board-dragdrop [board]="board"></app-board-dragdrop>
         }
         <app-new-list-form [workspaceId]="workspaceId" [boardId]="boardId" [board]="board"></app-new-list-form>
       </div>
