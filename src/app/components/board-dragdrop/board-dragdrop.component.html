@@ -4,7 +4,7 @@
       <div class="flex p-2 text-sm font-medium" cdkDragHandle>
         <p class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
       </div>
-      <div class="flex flex-col mx-1 px-1 py-1 gap-2 overflow-auto card-list" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="moveTask($event)">
+      <div class="flex flex-col mx-1 px-1 min-h-2 gap-2 overflow-auto card-list" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="moveTask($event)">
         @for (card of list.cards; track $index) {
           <div cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isTask = true" (mouseleave)="isTask = false">
             <app-task-card [card]="card"></app-task-card>
