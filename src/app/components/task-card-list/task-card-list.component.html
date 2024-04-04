@@ -1,12 +1,12 @@
 <div class="h-full w-[272px] flex flex-col">
-  <div class="bg-cc-task-list h-max rounded-xl text-cc-text overflow-hidden flex flex-col relative" (mouseenter)="setBoardScroll(false)" (mouseleave)="setBoardScroll(true)">
+  <div class="bg-cc-task-list h-max rounded-xl text-cc-text overflow-hidden flex flex-col relative shadow-sm shadow-black/20" (mouseenter)="setBoardScroll(false)" (mouseleave)="setBoardScroll(true)">
     <ng-content></ng-content>
     <div class="flex p-2 text-sm font-medium">
       @if (buildTask) {
       <form #taskForm [formGroup]="newTaskForm" (ngSubmit)="createTask(list)" class="w-full flex flex-col gap-2">
         <input id="task-title-input" autofocus type="text" formControlName="title"
           placeholder="Enter a title for this card…"
-          class="bg-cc-task-card outline-none pt-2 pb-7 px-3 rounded-lg w-full font-normal">
+          class="bg-cc-task-card outline-none pt-2 pb-7 px-3 rounded-lg w-full font-normal shadow-sm shadow-black/20">
         <div class="flex gap-1">
           <button type="submit" [disabled]="!newTaskForm.valid"
             class="py-[6px] px-3 font-semibold bg-cc-accent hover:bg-cc-accent-highlight text-cc-base rounded">Add
