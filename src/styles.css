@@ -48,6 +48,7 @@
   --task-list-scrollbar-track: 227, 229, 234;
   --task-list-scrollbar-thumb: 196, 201, 210;
   --task-card: 255, 255, 255;
+  --task-drop: 228, 230, 234;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -94,6 +95,7 @@
     --task-list-scrollbar-track: 28, 32, 21;
     --task-list-scrollbar-thumb: 50, 59, 55;
     --task-card: 34, 39, 43;
+    --task-drop: 28, 32, 21;
   }
 }
 
@@ -141,6 +143,7 @@
   --task-list-scrollbar-track: 227, 229, 234;
   --task-list-scrollbar-thumb: 196, 201, 210;
   --task-card: 255, 255, 255;
+  --task-drop: 228, 230, 234;
 }
 
 [data-theme="dark"] {
@@ -188,6 +191,7 @@
   --task-list-scrollbar-track: 28, 32, 21;
   --task-list-scrollbar-thumb: 50, 59, 55;
   --task-card: 34, 39, 43;
+  --task-drop: 28, 32, 21;
 }
 
 html {

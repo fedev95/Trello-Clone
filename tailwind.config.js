@@ -40,6 +40,7 @@ module.exports = {
         "cc-task-list-scrollbar-track": "rgba(var(--task-list-scrollbar-track))",
         "cc-task-list-scrollbar-thumb": "rgba(var(--task-list-scrollbar-thumb))",
         "cc-task-card": "rgba(var(--task-card))",
+        "cc-task-drop": "rgba(var(--task-drop))",
       }
     },
   },
