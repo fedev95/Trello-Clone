@@ -1,10 +1,10 @@
-<div class="h-full flex gap-3" cdkDropListGroup cdkDropList cdkDropListOrientation="horizontal">
+<div class="h-full flex gap-3" cdkDropListGroup cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="moveList($event)">
   @for (list of board.lists; track $index) {
     <app-task-card-list [list]="list" cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isList = true" (mouseleave)="isList = false">
       <div class="flex p-2 text-sm font-medium" cdkDragHandle>
-        <p (click)="falopa()" class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
+        <p class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
       </div>
-      <div class="flex flex-col mx-1 px-1 gap-2 overflow-auto card-list min-h-2" cdkDropList [cdkDropListData]="list">
+      <div class="flex flex-col mx-1 px-1 gap-2 overflow-auto card-list min-h-2" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="moveTask($event)">
         @for (card of list.cards; track $index) {
           <div cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isTask = true" (mouseleave)="isTask = false">
             <app-task-card [card]="card"></app-task-card>

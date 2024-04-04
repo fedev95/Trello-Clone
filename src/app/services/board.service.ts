@@ -1,3 +1,4 @@
+import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -23,6 +24,18 @@ export class BoardService {
 
   setScroll(value: boolean) {
     this.ableToScroll.next(value);
+  }
+
+  reorderTask(list: any, fromIndex: number, toIndex: number) {
+    moveItemInArray(list.cards, fromIndex, toIndex);
+  }
+
+  transferTask({ fromList, toList, fromIndex, toIndex }: any) {
+    transferArrayItem(fromList.cards, toList.cards, fromIndex, toIndex);
+  }
+
+  moveList(board: any, fromIndex: number, toIndex: number) {
+    moveItemInArray(board.lists, fromIndex, toIndex);
   }
 
 }
