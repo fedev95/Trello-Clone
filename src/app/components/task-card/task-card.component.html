@@ -1,1 +1,4 @@
-<p class="text-sm py-2 px-3 rounded-lg bg-cc-task-card">{{card.title}}</p>
+<button class="text-sm py-2 group px-3 rounded-lg bg-cc-task-card flex items-center w-full hover:ring-2 ring-cc-accent">
+  <p class="w-full text-start">{{card.title}}</p>
+  <app-pencil-icon dimensions="size-3" class="group-hover:visible invisible"></app-pencil-icon>
+</button>
