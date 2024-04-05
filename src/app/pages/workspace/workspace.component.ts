@@ -6,8 +6,8 @@ import { WorkspaceIconComponent } from "../../components/workspace-icon/workspac
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { PencilIconComponent } from "../../icons/pencil-icon/pencil-icon.component";
-import { TrashIconComponent } from "../../icons/trash-icon/trash-icon.component";
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DeleteWorkspaceComponent } from "../../components/delete-workspace/delete-workspace.component";
 
 @Component({
     selector: 'app-workspace',
@@ -20,9 +20,9 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } 
         UserIconComponent,
         WorkspaceIconComponent,
         PencilIconComponent,
-        TrashIconComponent,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        DeleteWorkspaceComponent
     ]
 })
 export default class WorkspaceComponent {
@@ -56,11 +56,6 @@ export default class WorkspaceComponent {
     title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
     description: new FormControl(''),
   });
-
-  deleteWorkspace(id: number) {
-    this.appService.deleteWorkspace(id);
-    this.router.navigate(['/']);
-  }
 
   showCreateBoardModal(workspaceId: number) {
     this.appService.setCreateBoardWorkspace(workspaceId);

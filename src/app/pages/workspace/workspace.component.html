@@ -45,9 +45,6 @@
         <button (click)="showCreateBoardModal(workspace.id)" class="bg-cc-accent hover:bg-cc-accent-highlight py-[6px] px-6 rounded text-cc-base text-sm font-medium">Create your first board</button>
       </div>
     }
-    <button (click)="deleteWorkspace(workspace.id)" aria-label="Delete workspace."
-      class="hover:underline hover:text-cc-accent text-cc-danger-red me-auto mt-10 text-sm font-semibold">
-      Delete this Workspace?
-    </button>
+    <app-delete-workspace [workspace]="workspace"></app-delete-workspace>
   </div>
 }

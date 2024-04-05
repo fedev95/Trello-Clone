@@ -1,0 +1,40 @@
+<button (click)="resetForm()" [cdkMenuTriggerFor]="deleteMenu" aria-label="Delete workspace."
+  class="hover:underline hover:text-cc-accent text-cc-danger-red me-auto mt-7 py-3 text-sm font-semibold">
+  Delete this Workspace?
+</button>
+<ng-template #deleteMenu>
+  <div
+    class="bg-cc-menu flex flex-col p-3 gap-2 w-[304px] rounded-xl border border-cc-border/15 shadow-xl shadow-cc-shadow text-cc-subtle text-sm" cdkMenu>
+    <div class="py-1 px-2 font-semibold flex justify-center items-center relative">
+      <p>Delete Workspace?</p>
+      <button aria-label="Close popover" cdkMenuItem class="absolute right-0 w-8 aspect-square rounded-md flex justify-center items-center hover:bg-cc-menu-item-hover">
+        <app-xmark-icon dimensions="size-3"></app-xmark-icon>
+      </button>
+    </div>
+    <div class="flex flex-col gap-2 mt-1 font-semibold">
+      <h3 class="text-cc-text text-base">Enter the Workspace name "{{workspace.title}}" to delete</h3>
+      <p class="text-xs">Things to know:</p>
+      <ul class="font-normal flex flex-col gap-2 text-cc-text">
+        <li>
+          <p class="flex items-start gap-2">
+            <span class="w-2 mt-[6px] aspect-square rounded-full bg-cc-subtle"></span>
+            This is permanent and can't be undone.
+          </p>
+        </li>
+        <li>
+          <p class="flex items-start gap-2">
+            <span class="w-2 mt-[6px] aspect-square rounded-full bg-cc-subtle"></span>
+            All boards in this Workspace will be closed.
+          </p>
+        </li>
+      </ul>
+      <form [formGroup]="deleteWorkspaceForm" (ngSubmit)="deleteWorkspace()" class="flex flex-col gap-2">
+        <label for="workspace-name-delete">
+          <span class="text-xs">Enter the Workspace name to delete</span>
+          <input formControlName="workspaceTitle" id="workspace-name-delete" type="text" class="py-[6px] hover:bg-cc-surface rounded bg-cc-base outline-none px-2 mt-1 border-2 border-cc-border/40 focus:border-cc-accent font-normal w-full">
+        </label>
+        <button [disabled]="deleteWorkspaceForm.invalid" class="{{deleteWorkspaceForm.invalid? 'bg-cc-overlay cursor-not-allowed' : 'bg-cc-danger-red hover:brightness-110 hover:bg-cc-danger-red'}} rounded text-cc-base py-2 text-sm font-medium" type="submit">Delete Workspace</button>
+      </form>
+    </div>
+  </div>
+</ng-template>
