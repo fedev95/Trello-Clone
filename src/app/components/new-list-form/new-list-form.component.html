@@ -1,5 +1,5 @@
-<div #newList>
-  <form [formGroup]="newListForm" (ngSubmit)="formFunc()" (mousedown)="$event.stopPropagation()"
+<div #newList (mouseenter)="setBoardScroll(false)" (mouseleave)="setBoardScroll(true)">
+  <form [formGroup]="newListForm" (ngSubmit)="formFunc()"
     class="{{listbuilder? 'flex' : 'hidden'}} min-w-[272px] text-sm gap-2 p-2 bg-cc-task-list flex-col rounded-xl text-cc-text">
     <input id="miInput" autofocus formControlName="title" type="text" aria-label="Enter list title"
       class="p-1 outline-none py-[6px] px-3 rounded-md border-2 border-cc-border/15 focus:border-cc-accent bg-cc-task-card font-semibold w-full"
@@ -16,7 +16,7 @@
   </form>
   <button
     class="{{listbuilder? 'hidden' : 'flex'}} min-w-[272px] p-3 bg-white/20 hover:bg-white/10 rounded-xl text-white flex gap-2 text-sm font-medium items-center"
-    (click)="listbuilder = true" (mousedown)="$event.stopPropagation()">
+    (click)="listbuilder = true">
     <app-plus-icon dimensions="size-3"></app-plus-icon>
     {{board.lists.length > 0? 'Add another list' : 'Add a list'}}
   </button>

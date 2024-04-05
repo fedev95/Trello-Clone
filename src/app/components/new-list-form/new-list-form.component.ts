@@ -3,6 +3,7 @@ import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component"
 import { PlusIconComponent } from "../../icons/plus-icon/plus-icon.component";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppService } from '../../services/app.service';
+import { BoardService } from '../../services/board.service';
 
 @Component({
     selector: 'app-new-list-form',
@@ -22,6 +23,7 @@ export class NewListFormComponent {
   @Input({ required: true }) workspaceId: any;
   @Input({ required: true }) boardId: any;
   appService = inject(AppService);
+  boardService = inject(BoardService);
   listbuilder: boolean = false;
 
   @ViewChild('newList') menux!: ElementRef;
@@ -52,6 +54,10 @@ export class NewListFormComponent {
       title: '',
       cards: []
     });
+  }
+
+  setBoardScroll(value: boolean) {
+    this.boardService.setScroll(value);
   }
 
 }
