@@ -25,8 +25,9 @@ export class TaskCardListComponent {
   boardService = inject(BoardService);
   buildTask: boolean = false;
 
-  @ViewChild('taskForm') menux!: ElementRef;
-  @HostListener('document:click', ['$event'])
+  @ViewChild('taskBuilder') menux!: ElementRef;
+  @HostListener('document:mousedown', ['$event'])
+  @HostListener('document:keydown.escape', ['$event'])
   onClick(event: Event) {
     if (this.buildTask && !this.menux.nativeElement.contains(event.target)) {
       this.createCancel();
@@ -55,10 +56,6 @@ export class TaskCardListComponent {
     this.newTaskForm.patchValue({
       title: '',
     });
-  }
-
-  showCreateTaskForm() {
-    this.buildTask = true;
   }
   
 }

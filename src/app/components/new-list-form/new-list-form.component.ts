@@ -22,12 +22,13 @@ export class NewListFormComponent {
   @Input({ required: true }) workspaceId: any;
   @Input({ required: true }) boardId: any;
   appService = inject(AppService);
-  builder: boolean = false;
+  listbuilder: boolean = false;
 
-  @ViewChild('form') menux!: ElementRef;
+  @ViewChild('newList') menux!: ElementRef;
   @HostListener('document:click', ['$event'])
+  @HostListener('document:keydown.escape', ['$event'])
   onClick(event: Event) {
-    if (this.builder && !this.menux.nativeElement.contains(event.target)) {
+    if (this.listbuilder && !this.menux.nativeElement.contains(event.target)) {
       this.cancel();
     }
   }
@@ -46,7 +47,7 @@ export class NewListFormComponent {
   }
 
   cancel() {
-    this.builder = false;
+    this.listbuilder = false;
     this.newListForm.patchValue({
       title: '',
       cards: []
