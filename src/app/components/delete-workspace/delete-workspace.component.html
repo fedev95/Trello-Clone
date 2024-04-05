@@ -1,13 +1,12 @@
-<button (click)="resetForm()" [cdkMenuTriggerFor]="deleteMenu" aria-label="Delete workspace."
+<button (click)="isOpen = !isOpen; $event.stopPropagation(); resetForm()" cdkOverlayOrigin #trigger="cdkOverlayOrigin" aria-label="Delete workspace."
   class="hover:underline hover:text-cc-accent text-cc-danger-red me-auto mt-7 py-3 text-sm font-semibold">
   Delete this Workspace?
 </button>
-<ng-template #deleteMenu>
-  <div
-    class="bg-cc-menu flex flex-col p-3 gap-2 w-[304px] rounded-xl border border-cc-border/15 shadow-xl shadow-cc-shadow text-cc-subtle text-sm" cdkMenu>
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+  <div #deletePopover class="bg-cc-menu flex flex-col p-3 gap-2 w-[304px] rounded-xl border border-cc-border/15 shadow-xl shadow-cc-shadow text-cc-subtle text-sm">
     <div class="py-1 px-2 font-semibold flex justify-center items-center relative">
       <p>Delete Workspace?</p>
-      <button aria-label="Close popover" cdkMenuItem class="absolute right-0 w-8 aspect-square rounded-md flex justify-center items-center hover:bg-cc-menu-item-hover">
+      <button (click)="isOpen = false" aria-label="Close popover" class="absolute right-0 w-8 aspect-square rounded-md flex justify-center items-center hover:bg-cc-menu-item-hover">
         <app-xmark-icon dimensions="size-3"></app-xmark-icon>
       </button>
     </div>
