@@ -30,8 +30,8 @@ export class BoardSidebarComponent {
   @Input({required: true}) workspace: any;
   @Input({ required: true }) board: any;
 
-  closeBoard() {
-    this.appService.closeBoard(this.workspace.id, this.board.id);
+  closeBoard(boardId: number) {
+    this.appService.closeBoard(this.workspace.id, boardId);
     this.router.navigate(['/']);
   }
 

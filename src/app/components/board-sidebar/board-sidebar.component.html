@@ -25,7 +25,7 @@
                 routerLinkActive="bg-white/20">
                 <div class="min-w-6 min-h-5 rounded-sm {{board.background}}"></div>
                 <a routerLink="/board/{{workspace.id}}/{{board.id}}" class="truncate expanded-link">{{board.title}}</a>
-                <button (click)="closeBoard()" title="Close board"
+                <button (click)="closeBoard(board.id)" title="Close board"
                   class="flex ms-auto w-0 h-7 overflow-hidden focus:min-w-7 justify-center items-center aspect-square rounded-sm hover:bg-white/15 relative">
                   <app-minus-icon dimensions="size-3"></app-minus-icon>
                 </button>
