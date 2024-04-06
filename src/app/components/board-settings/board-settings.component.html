@@ -15,18 +15,18 @@
     @switch (activeMenu) {
       @case (settingsMenu.DEFAULT) {
         <div class="p-4 text-sm font-base flex flex-col gap-1 menu-animation h-full overflow-y-auto scrollbar">
-          <button (click)="setActiveMenu(settingsMenu.ARCHIVED)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
+          <!-- <button (click)="setActiveMenu(settingsMenu.ARCHIVED)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
             <app-archive-icon dimensions="size-5"></app-archive-icon>
             Archived items
-          </button>
+          </button> -->
           <button (click)="setActiveMenu(settingsMenu.BACKGROUND)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
             <div class="size-5 rounded-sm {{board.background}}"></div>
             Change background
           </button>
-          <button (click)="setActiveMenu(settingsMenu.LABELS)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
+          <!-- <button (click)="setActiveMenu(settingsMenu.LABELS)" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
             <app-label-icon dimensions="size-5 -rotate-90"></app-label-icon>
             Labels
-          </button>
+          </button> -->
           <button (click)="closeBoard()" class="flex items-center gap-3 py-[6px] px-3 hover:bg-cc-menu-item-hover w-full rounded-md">
             <app-minus-icon dimensions="size-5"></app-minus-icon>
             Close board
