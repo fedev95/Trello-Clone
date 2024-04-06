@@ -3,7 +3,7 @@
     <ng-content></ng-content>
     <div #taskBuilder class="flex p-2 pt-[6px] text-sm font-medium">
       <form [formGroup]="newTaskForm" (ngSubmit)="createTask(list)" class="{{buildTask? 'flex' : 'hidden'}} w-full flex-col gap-2">
-        <input id="{{list.title}}-title-input" autofocus type="text" formControlName="title" placeholder="Enter a title for this card…"
+        <input id="{{list.title}}-task-input" autofocus type="text" formControlName="title" placeholder="Enter a title for this card…"
           class="bg-cc-task-card outline-none pt-2 pb-7 px-3 rounded-lg w-full font-normal shadow-sm shadow-black/20">
         <div class="flex gap-1">
           <button type="submit" [disabled]="!newTaskForm.valid"

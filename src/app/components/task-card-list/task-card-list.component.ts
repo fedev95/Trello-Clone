@@ -61,7 +61,7 @@ export class TaskCardListComponent {
   showTaskBuilder() {
     this.buildTask = true;
     setTimeout(() => {
-      let input = document.getElementById(`${this.list.title}-title-input`);
+      let input = document.getElementById(`${this.list.title}-task-input`);
       input?.focus();      
     });
   }
