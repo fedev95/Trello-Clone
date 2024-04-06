@@ -57,5 +57,13 @@ export class TaskCardListComponent {
       title: '',
     });
   }
+
+  showTaskBuilder() {
+    this.buildTask = true;
+    setTimeout(() => {
+      let input = document.getElementById(`${this.list.title}-title-input`);
+      input?.focus();      
+    });
+  }
   
 }

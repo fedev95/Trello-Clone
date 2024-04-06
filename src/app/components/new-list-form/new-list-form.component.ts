@@ -60,4 +60,12 @@ export class NewListFormComponent {
     this.boardService.setScroll(value);
   }
 
+  showListBuilder() {
+    this.listbuilder = true;
+    setTimeout(() => {
+      let input = document.getElementById(`new-list-title-input`);
+      input?.focus();
+    });
+  }
+
 }
