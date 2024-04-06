@@ -22,6 +22,7 @@ import { BoardService } from '../../services/board.service';
 export class TaskCardListComponent {
 
   @Input({ required: true }) list: any;
+  @Input({ required: true }) listIndex: number = -1;
   boardService = inject(BoardService);
   buildTask: boolean = false;
 
@@ -61,7 +62,7 @@ export class TaskCardListComponent {
   showTaskBuilder() {
     this.buildTask = true;
     setTimeout(() => {
-      let input = document.getElementById(`${this.list.title}-task-input`);
+      let input = document.getElementById(`${this.listIndex}-task-input`);
       input?.focus();      
     });
   }

@@ -1,6 +1,6 @@
 <div class="h-full flex gap-3" cdkDropListGroup cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="moveList($event)">
   @for (list of board.lists; track $index) {
-    <app-task-card-list [list]="list" cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isList = true" (mouseleave)="isList = false">
+    <app-task-card-list [list]="list" [listIndex]="$index" cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isList = true" (mouseleave)="isList = false">
       <div class="p-2 text-sm font-semibold" cdkDragHandle>
         <button (click)="showTitleInput($index, list.title)" class="{{listTitleEdit == $index? 'hidden' : ''}} w-full py-[6px] px-3 text-start border-2 border-transparent rounded-lg">{{list.title}}</button>
         <form class="w-full" [formGroup]="updateListTitleForm" (ngSubmit)="listTitleInput.blur()">
@@ -22,7 +22,7 @@
       </div>
       @if (isList) {
         <div *cdkDragPlaceholder class="opacity-20 overflow-hidden max-h-full flex flex-col rounded-xl">
-          <app-task-card-list [list]="list">
+          <app-task-card-list [list]="list" [listIndex]="$index">
             <div class="h-full w-full absolute bg-black top-0 left-0"></div>
             <div class="flex p-2 text-sm font-medium">
               <p class="text-sm font-semibold py-2 px-3">{{list.title}}</p>
