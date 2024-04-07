@@ -15,7 +15,7 @@
           </form>
         </div>
         <button aria-label="Show menu"
-          class="p-2 hover:bg-white/15 focus:bg-white/15 rounded-sm {{(settings | async)? 'invisible' : 'visible'}}"
+          class="p-2 hover:bg-white/15 focus:bg-white/15 rounded {{(settings | async)? 'invisible' : 'visible'}}"
           (click)="setSettingsSidebar(true)">
           <app-menu-dots-icon dimensions="size-4"></app-menu-dots-icon>
         </button>
