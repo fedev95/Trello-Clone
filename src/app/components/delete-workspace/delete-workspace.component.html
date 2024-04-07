@@ -1,4 +1,4 @@
-<button (click)="isOpen = !isOpen; $event.stopPropagation(); resetForm()" cdkOverlayOrigin #trigger="cdkOverlayOrigin" aria-label="Delete workspace."
+<button #overlayTrigger (click)="isOpen = !isOpen; resetForm()" cdkOverlayOrigin #trigger="cdkOverlayOrigin" aria-label="Delete workspace."
   class="hover:underline hover:text-cc-accent text-cc-danger-red me-auto mt-7 py-3 text-sm font-semibold">
   Delete this Workspace?
 </button>

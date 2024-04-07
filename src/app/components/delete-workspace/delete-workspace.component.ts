@@ -26,9 +26,10 @@ export class DeleteWorkspaceComponent {
   isOpen = false;
 
   @ViewChild('deletePopover') menux!: ElementRef;
+  @ViewChild('overlayTrigger') trigger!: ElementRef;
   @HostListener('document:click', ['$event'])
   onClick(event: Event) {
-    if (this.isOpen && !this.menux.nativeElement.contains(event.target)) {
+    if (this.isOpen && !this.menux.nativeElement.contains(event.target) && !this.trigger.nativeElement.contains(event.target)) {
       this.isOpen = false;
     }
   }
