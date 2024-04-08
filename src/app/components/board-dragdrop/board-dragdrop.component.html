@@ -1,11 +1,12 @@
 <div class="h-full flex gap-3" cdkDropListGroup cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="moveList($event)">
   @for (list of board.lists; track $index) {
     <app-task-card-list [list]="list" [listIndex]="$index" cdkDrag cdkDragPreviewContainer="parent" (mouseenter)="isList = true" (mouseleave)="isList = false">
-      <div class="p-2 text-sm font-semibold" cdkDragHandle>
-        <button (click)="showTitleInput($index, list.title)" class="{{listTitleEdit == $index? 'hidden' : ''}} w-full py-[6px] px-3 text-start border-2 border-transparent rounded-lg">{{list.title}}</button>
-        <form class="w-full" [formGroup]="updateListTitleForm" (ngSubmit)="listTitleInput.blur()">
-          <input #listTitleInput id="{{$index}}-title-input" formControlName="title" class="{{listTitleEdit == $index? '' : 'hidden'}} bg-cc-menu border-2 focus:border-cc-accent outline-none rounded-lg w-full py-[6px] px-3" type="text" (blur)="submitTitle(list)">
+      <div class="p-2 text-sm font-semibold flex gap-1" cdkDragHandle>
+        <button (click)="showTitleInput($index, list.title)" class="{{listTitleEdit == $index? 'hidden' : ''}} w-full py-1 px-3 text-start border-2 border-transparent rounded-lg">{{list.title}}</button>
+        <form class="{{listTitleEdit == $index? '' : 'hidden'}} w-full" [formGroup]="updateListTitleForm" (ngSubmit)="listTitleInput.blur()">
+          <input #listTitleInput id="{{$index}}-title-input" formControlName="title" class="bg-cc-menu border-2 focus:border-cc-accent outline-none rounded-lg w-full py-1 px-3" type="text" (blur)="submitTitle(list)">
         </form>
+        <app-list-options [board]="board" [list]="list" [listIndex]="$index"></app-list-options>
       </div>
       <div class="flex flex-col mx-1 px-1 py-[2px] gap-2 overflow-auto card-list" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="moveTask($event)">
         @for (card of list.cards; track $index) {

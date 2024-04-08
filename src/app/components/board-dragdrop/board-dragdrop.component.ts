@@ -4,6 +4,7 @@ import { TaskCardComponent } from "../task-card/task-card.component";
 import { CdkDrag, CdkDragDrop, CdkDragHandle, CdkDragPlaceholder, CdkDragPreview, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { BoardService } from '../../services/board.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ListOptionsComponent } from "../list-options/list-options.component";
 
 @Component({
     selector: 'app-board-dragdrop',
@@ -21,7 +22,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
         CdkDropListGroup,
         CdkDragHandle,
         CdkDragPlaceholder,
-        CdkDragPreview
+        CdkDragPreview,
+        ListOptionsComponent
     ]
 })
 export class BoardDragdropComponent {
@@ -80,6 +82,5 @@ export class BoardDragdropComponent {
     }
     this.boardService.moveList(this.board, previousIndex, currentIndex);
   }
-
 
 }

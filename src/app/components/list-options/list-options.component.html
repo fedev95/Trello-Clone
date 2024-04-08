@@ -1,0 +1,20 @@
+<button #triger (click)="isOpen = !isOpen" cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+  [attr.aria-label]="list.title + ' list actions'"
+  class="size-8 rounded-lg hover:bg-cc-task-list-btn flex justify-center items-center">
+  <app-menu-dots-icon dimensions="size-3"></app-menu-dots-icon>
+</button>
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+  <div class="fixed inset-0"></div>
+  <div #listOptions class="flex flex-col py-3 gap-2 w-[304px] bg-cc-menu rounded-xl border border-cc-border/15 shadow-xl shadow-cc-shadow text-cc-subtle text-sm z-50">
+    <div class="py-1 mx-3 flex font-semibold justify-center items-center relative">
+      <p>List actions</p>
+      <button (click)="isOpen = false" aria-label="Close list actions"
+        class="absolute right-0 w-8 aspect-square rounded-md flex justify-center items-center hover:bg-cc-menu-item-hover">
+        <app-xmark-icon dimensions="size-3"></app-xmark-icon>
+      </button>
+    </div>
+    <div class="mt-1 text-cc-text">
+      <button (click)="deleteList(); isOpen = false" class="hover:bg-cc-menu-item-hover text-start py-[6px] px-3 w-full">Delete this list</button>
+    </div>
+  </div>
+</ng-template>
