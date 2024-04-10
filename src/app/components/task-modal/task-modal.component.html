@@ -16,7 +16,7 @@
             </div>
             <span class="ms-[13px] font-semibold">Description</span>
           </div>
-          <textarea (blur)="updateTask()" formControlName="description" id="description" rows="5" placeholder="Add a more detailed description…" class="ms-10 px-3 py-[6px] text-sm bg-cc-overlay hover:bg-cc-subtle/20 focus:bg-cc-base focus:border-cc-accent border-2 border-transparent rounded-md outline-none resize-none"></textarea>          
+          <textarea (blur)="updateTaskForm.get('description')!.valid? updateTask() : ''" formControlName="description" id="description" rows="5" placeholder="Add a more detailed description…" class="ms-10 px-3 py-[6px] text-sm bg-cc-overlay hover:bg-cc-subtle/20 focus:bg-cc-base focus:border-cc-accent border-2 border-transparent rounded-md outline-none resize-none"></textarea>          
         </div>
         <div class="max-w-[168px] w-full flex flex-col gap-2 text-sm">
           <p class="text-xs font-semibold text-cc-subtle">Actions</p>
