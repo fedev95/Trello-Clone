@@ -8,13 +8,20 @@
         </form>
         <app-list-options [board]="board" [list]="list" [listIndex]="$index"></app-list-options>
       </div>
-      <div class="flex flex-col mx-1 px-1 py-[2px] gap-2 overflow-auto card-list" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="moveTask($event)">
+      <div cdkMenu class="flex flex-col mx-1 px-1 py-[2px] gap-2 overflow-auto card-list" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="moveTask($event)">
         @for (card of list.cards; track $index) {
           <div cdkDrag cdkDragPreviewContainer="parent" class="shadow-sm shadow-black/20 rounded" (mouseenter)="isTask = true" (mouseleave)="isTask = false">
-            <app-task-card [card]="card"></app-task-card>
+            <button cdkMenuItem (click)="setOpenedTask(card, list, $index)"
+              class="text-sm py-2 group px-3 rounded-lg bg-cc-task-card flex items-center w-full outline outline-2 outline-transparent hover:outline-cc-accent focus:outline-cc-accent">
+              <p class="w-full text-start">{{card.title}}</p>
+              <app-pencil-icon dimensions="size-3" class="group-hover:visible group-focus:visible invisible text-cc-subtle"></app-pencil-icon>
+            </button>
             @if (isTask) {
               <div *cdkDragPlaceholder class="relative">
-                <app-task-card [card]="card"></app-task-card>
+                <button
+                  class="text-sm py-2 group px-3 rounded-lg bg-cc-task-card flex items-center w-full outline outline-2 outline-transparent">
+                  <p class="w-full text-start">{{card.title}}</p>
+                </button>
                 <div class="absolute top-0 left-0 rounded-lg bg-cc-task-drop w-full h-full"></div>
               </div>
             }
@@ -30,7 +37,10 @@
             </div>
             <div class="flex flex-col mx-1 px-1 gap-2 overflow-auto">
               @for (card of list.cards; track $index) {
-                <app-task-card [card]="card"></app-task-card>
+                <button
+                  class="text-sm py-2 group px-3 rounded-lg bg-cc-task-card flex items-center w-full outline outline-2 outline-transparent">
+                  <p class="w-full text-start">{{card.title}}</p>
+                </button>
               }
             </div>
           </app-task-card-list>
@@ -39,3 +49,5 @@
     </app-task-card-list>
   }
 </div>
+
+<app-task-modal [taskList]="taskList" [taskIndex]="taskIndex"></app-task-modal>

@@ -1,0 +1,31 @@
+<dialog (mouseenter)="setScroll()" id="task-modal" class="max-w-3xl w-full bg-cc-surface backdrop:bg-black/80 p-4 rounded-xl border border-cc-border/15 text-cc-text">
+  @if (task) {
+    <form [formGroup]="updateTaskForm" (ngSubmit)="updateTask()" class="flex flex-col gap-5">
+      <div class="flex gap-1 items-center">
+        <app-task-icon dimensions="size-6 text-cc-subtle"></app-task-icon>
+        <input (blur)="updateTask()" formControlName="title" type="text" class="w-full py-1 px-3 font-semibold bg-transparent focus:bg-cc-base focus:border-cc-accent border-2 border-transparent rounded-md outline-none text-lg">
+        <button type="button" aria-label="Close dialog" (click)="closeModal()" class="ms-5 rounded-full hover:bg-cc-overlay p-3 flex justify-center items-center text-cc-subtle">
+          <app-xmark-icon dimensions="size-4"></app-xmark-icon>
+        </button>
+      </div>
+      <div class="flex flex-col md:flex-row w-full gap-4">
+        <div class="flex flex-col gap-3 w-full">
+          <div class="flex items-center gap-1">
+            <div class="min-w-6 flex justify-center text-cc-subtle">
+              <app-text-icon dimensions="size-4"></app-text-icon>
+            </div>
+            <span class="ms-[13px] font-semibold">Description</span>
+          </div>
+          <textarea (blur)="updateTask()" formControlName="description" id="description" rows="5" placeholder="Add a more detailed description…" class="ms-10 px-3 py-[6px] text-sm bg-cc-overlay hover:bg-cc-subtle/20 focus:bg-cc-base focus:border-cc-accent border-2 border-transparent rounded-md outline-none resize-none"></textarea>          
+        </div>
+        <div class="max-w-[168px] w-full flex flex-col gap-2 text-sm">
+          <p class="text-xs font-semibold text-cc-subtle">Actions</p>
+          <button aria-label="Delete task" type="button" (click)="deleteTask(); closeModal()" class="bg-cc-overlay hover:bg-cc-subtle/20 w-full py-[6px] px-3 flex items-center gap-2 rounded font-medium">
+            <app-trash-icon dimensions="size-3 text-cc-subtle"></app-trash-icon>
+            Delete
+          </button>
+        </div>
+      </div>
+    </form>
+  }
+</dialog>

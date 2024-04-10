@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BoardDragdropComponent } from "../../components/board-dragdrop/board-dragdrop.component";
+import { TaskModalComponent } from "../../components/task-modal/task-modal.component";
 
 @Component({
     selector: 'app-board',
@@ -27,7 +28,8 @@ import { BoardDragdropComponent } from "../../components/board-dragdrop/board-dr
         NewListFormComponent,
         ReactiveFormsModule,
         FormsModule,
-        BoardDragdropComponent
+        BoardDragdropComponent,
+        TaskModalComponent
     ]
 })
 export default class BoardComponent implements OnInit {

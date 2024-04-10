@@ -9,6 +9,7 @@ export class AppService {
   
   data: BehaviorSubject<any> = new BehaviorSubject<any>(data);
   selectedBoard: BehaviorSubject<any> = new BehaviorSubject(undefined);
+  openedTask: BehaviorSubject<any> = new BehaviorSubject(undefined);
   createBoardWorkspace: BehaviorSubject<any> = new BehaviorSubject(data.workspaces[0].id);
 
   getData() {
@@ -143,6 +144,18 @@ export class AppService {
       let index = data.recent.indexOf(recentBoard);
       data.recent.splice(index, 1);
     }
+  }
+
+  setOpenedTask(task: any) {
+    this.openedTask.next(task);
+  }
+
+  getOpenedTask() {
+    return this.openedTask.asObservable();
+  }
+
+  deleteTask(taskList: any, taskIndex: number) {
+    taskList.cards.splice(taskIndex, 1);
   }
 
 }

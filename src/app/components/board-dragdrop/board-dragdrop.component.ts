@@ -1,10 +1,13 @@
 import { Component, Input, inject } from '@angular/core';
 import { TaskCardListComponent } from "../task-card-list/task-card-list.component";
-import { TaskCardComponent } from "../task-card/task-card.component";
 import { CdkDrag, CdkDragDrop, CdkDragHandle, CdkDragPlaceholder, CdkDragPreview, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { BoardService } from '../../services/board.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ListOptionsComponent } from "../list-options/list-options.component";
+import { TaskModalComponent } from "../task-modal/task-modal.component";
+import { PencilIconComponent } from "../../icons/pencil-icon/pencil-icon.component";
+import { AppService } from '../../services/app.service';
+import { CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
 
 @Component({
     selector: 'app-board-dragdrop',
@@ -16,23 +19,30 @@ import { ListOptionsComponent } from "../list-options/list-options.component";
         ReactiveFormsModule,
         FormsModule,
         TaskCardListComponent,
-        TaskCardComponent,
         CdkDrag,
         CdkDropList,
         CdkDropListGroup,
         CdkDragHandle,
         CdkDragPlaceholder,
         CdkDragPreview,
-        ListOptionsComponent
+        ListOptionsComponent,
+        TaskModalComponent,
+        PencilIconComponent,
+        CdkMenu,
+        CdkMenuItem
     ]
 })
 export class BoardDragdropComponent {
 
   @Input({required: true}) board: any;
+  appService = inject(AppService);
   boardService = inject(BoardService);
   listTitleEdit: number = -1;
   isList: boolean = false;
   isTask: boolean = false;
+  task: any;
+  taskList: any;
+  taskIndex: any;
 
   updateListTitleForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
@@ -81,6 +91,15 @@ export class BoardDragdropComponent {
       return;
     }
     this.boardService.moveList(this.board, previousIndex, currentIndex);
+  }
+
+  setOpenedTask(task: any, taskList: any, taskIndex: any) {
+    this.taskList = taskList;
+    this.taskIndex = taskIndex;
+    this.appService.setOpenedTask(task);
+    let modal = document.getElementById('task-modal');
+    // @ts-ignore
+    modal?.showModal();
   }
 
 }

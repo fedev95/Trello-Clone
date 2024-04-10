@@ -1,5 +1,4 @@
 import { Component, ElementRef, HostListener, Input, ViewChild, inject } from '@angular/core';
-import { TaskCardComponent } from "../task-card/task-card.component";
 import { PlusIconComponent } from "../../icons/plus-icon/plus-icon.component";
 import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { XmarkIconComponent } from "../../icons/xmark-icon/xmark-icon.component";
@@ -12,7 +11,6 @@ import { BoardService } from '../../services/board.service';
     styleUrl: './task-card-list.component.css',
     host: { 'class': 'flex flex-grow' },
     imports: [
-        TaskCardComponent,
         PlusIconComponent,
         FormsModule,
         ReactiveFormsModule,
