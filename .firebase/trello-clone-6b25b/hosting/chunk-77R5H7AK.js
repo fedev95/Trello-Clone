@@ -1,1 +1,0 @@
-import{J as a,O as p,qb as s}from"./chunk-ADMRNR7F.js";var f=(()=>{let r=class r{constructor(){this.appService=a(s)}transform(e,...i){let o;return this.appService.getBoardById(e.workspaceId,e.boardId).subscribe({next:c=>{o=c}}),o}};r.\u0275fac=function(i){return new(i||r)},r.\u0275pipe=p({name:"boardData",type:r,pure:!0,standalone:!0});let t=r;return t})();export{f as a};
