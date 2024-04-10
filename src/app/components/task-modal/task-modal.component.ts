@@ -66,7 +66,9 @@ export class TaskModalComponent implements OnInit {
         title: this.task.title
       });
     }
-    this.task.description = this.updateTaskForm.getRawValue().description;
+    if (this.updateTaskForm.get('description')?.valid) {
+      this.task.description = this.updateTaskForm.getRawValue().description;
+    }
   }
 
   deleteTask() {
