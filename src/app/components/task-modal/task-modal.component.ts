@@ -33,7 +33,7 @@ export class TaskModalComponent implements OnInit {
 
   updateTaskForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-    description: new FormControl('', Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/))
+    description: new FormControl('', Validators.pattern(/^(\s*\S+\s*)*(?!\s).*$/m))
   });
 
   ngOnInit(): void {
