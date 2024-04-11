@@ -8,6 +8,7 @@ import { TaskModalComponent } from "../task-modal/task-modal.component";
 import { PencilIconComponent } from "../../icons/pencil-icon/pencil-icon.component";
 import { AppService } from '../../services/app.service';
 import { CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
+import { TextIconComponent } from "../../icons/text-icon/text-icon.component";
 
 @Component({
     selector: 'app-board-dragdrop',
@@ -29,7 +30,8 @@ import { CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
         TaskModalComponent,
         PencilIconComponent,
         CdkMenu,
-        CdkMenuItem
+        CdkMenuItem,
+        TextIconComponent
     ]
 })
 export class BoardDragdropComponent {
